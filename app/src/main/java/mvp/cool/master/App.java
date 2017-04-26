@@ -45,6 +45,8 @@ public class App extends Application{
                     .penaltyDeath()
                     .build());
         }
+
+        initDataBase();
     }
 
     public static App getInstance(){
