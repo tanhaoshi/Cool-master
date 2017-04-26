@@ -1,7 +1,13 @@
 package mvp.cool.master;
 
 import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
+
+import com.example.DaoMaster;
+import com.example.DaoSession;
+import com.example.UserDao;
+import com.example.liveDao;
 
 /**
  * @author TanHao
@@ -14,6 +20,8 @@ public class App extends Application{
     public static App sApp;
 
     private boolean DEV_MODE = true;
+
+    public static DaoSession sDaoSession;
 
     @Override
     public void onCreate() {
@@ -41,5 +49,24 @@ public class App extends Application{
 
     public static App getInstance(){
         return sApp;
+    }
+
+    private void initDataBase(){
+
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, Constant.sql_Name_key, null);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        // 注意：该数据库连接属于 DaoMaster，所以多个 Session 指的是相同的数据库连接。
+        DaoMaster daoMaster = new DaoMaster(db);
+
+        sDaoSession = daoMaster.newSession();
+    }
+
+    public static UserDao getUserDao(){
+        return sDaoSession.getUserDao();
+    }
+
+    public static liveDao getliveDao(){
+        return sDaoSession.getLiveDao();
     }
 }

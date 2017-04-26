@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 25
@@ -17,6 +18,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
+    }
 }
 
 dependencies {
@@ -26,4 +39,28 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
+    //recyclerview
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    //线性百分比布局
+    compile 'com.android.support:percent:24.0.0'
+    //dagger2
+    compile 'com.google.dagger:dagger:2.0.2'
+    apt 'com.google.dagger:dagger-compiler:2.0.2'
+    //inject
+    compile 'javax.inject:javax.inject:1'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //rxjava
+    compile 'io.reactivex:rxjava:1.1.5'
+    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    //retrofit与okhttp
+    compile files('libs/okhttp3.jar')
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    //converter-gson 与 adpter-rxjava
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //万能adpater
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+    compile 'de.greenrobot:greendao:2.1.0'
 }
