@@ -1,8 +1,10 @@
 package mvp.cool.master;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
+import android.support.multidex.MultiDex;
 
 import com.example.DaoMaster;
 import com.example.DaoSession;
@@ -22,6 +24,12 @@ public class App extends Application{
     private boolean DEV_MODE = true;
 
     public static DaoSession sDaoSession;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {

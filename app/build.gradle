@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -32,17 +33,29 @@ android {
     }
 }
 
+//dex文件分包
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = ['--multi-dex']
+        } else {
+            dx.additionalParameters += '--multi-dex'
+        }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
     //recyclerview
     compile 'com.android.support:recyclerview-v7:25.2.0'
-    //线性百分比布局
-    compile 'com.android.support:percent:24.0.0'
     //dagger2
     compile 'com.google.dagger:dagger:2.0.2'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
@@ -53,7 +66,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     //rxjava
     compile 'io.reactivex:rxjava:1.1.5'
-    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    compile 'io.reactivex:rxandroid:1.2.0'
     //retrofit与okhttp
     compile files('libs/okhttp3.jar')
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
@@ -63,4 +76,6 @@ dependencies {
     //万能adpater
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'de.greenrobot:greendao:2.1.0'
+    //multiDex
+    compile 'com.android.support:multidex:1.0.0'
 }

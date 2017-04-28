@@ -7,5 +7,9 @@ package mvp.cool.master;
  */
 
 public class Constant {
+
     public static final String sql_Name_key = "TanHao.db";
+
+    public static final String BASE_URL = "";
+
 }
