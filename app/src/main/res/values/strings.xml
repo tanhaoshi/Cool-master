@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">Cool-master</string>
+    <string name="app_name">CardService-master</string>
+
+    <!-- tab  navigation -->
+    <string name="tab_first">首页</string>
+    <string name="tab_rim">周边</string>
+    <string name="tab_shop">商城</string>
+    <string name="tab_me">我的</string>
+
+    <!-- me -->
+    <string name="btn_click_login">退出登录</string>
+    <string name="mine_follow">谭XX</string>
+    <string name="mine_fans">15367257793</string>
+    <string name="mine_recharge">充值</string>
+    <string name="mine_starlight">安全中心</string>
+    <string name="mine_contribution">我的银行卡</string>
+    <string name="mine_watch">我的账单</string>
+    <string name="mine_level">我的收货地址</string>
+    <string name="mine_task">我的卡券</string>
+    <string name="mine_game">积分商城</string>
+    <string name="mine_setting">设置支付密码</string>
+    <string name="mine_recommond">推荐APP</string>
+    <string name="mine_consume">消费二维码</string>
+
+    <!-- SafetyActivity layout -->
+    <string name="safety_phone">绑定手机</string>
+    <string name="safety_approve">实名认证</string>
+    <string name="safety_textone">请输入您需要绑定的</string>
+    <string name="safety_texttwo">手机号码</string>
+    <string name="safety_textthree">,并进行验证:</string>
+    <string name="safety_textsemiclon">手机号码:</string>
+    <string name="safety_verify">验证码:</string>
 </resources>

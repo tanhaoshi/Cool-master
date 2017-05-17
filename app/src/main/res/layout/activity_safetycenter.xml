@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/activity_safety_center"
+            android:text="@string/safety_phone"
+            android:gravity="center"
+            android:layout_weight="1"/>
+        <View
+            android:layout_width="0.3dp"
+            android:layout_height="@dimen/activity_safety_center"
+            android:background="@color/black_transparent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/activity_safety_center"
+            android:text="@string/safety_approve"
+            android:gravity="center"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:text="@string/safety_textone"
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/safety_color_text"
+            android:layout_marginLeft="3dp"
+            android:text="@string/safety_texttwo"
+            android:textSize="15sp"
+            android:textColor="@color/colorAccents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginLeft="3dp"
+            android:text="@string/safety_textthree"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+    >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_safety_textsize"
+            android:text="@string/safety_textsemiclon"
+            android:gravity="center"
+            android:textSize="@dimen/activity_safety_textsize"
+            android:textColor="@color/black_transparent"
+        />
+        
+        <mvp.cool.master.layout.EdiTextClean
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:hint="请输入手机号"
+            android:textSize="15sp"
+            android:maxLength="11"
+            android:paddingLeft="18dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:textColorHint="#9b9b9b"
+            android:background="@drawable/safety_activty_phone_selector"
+            android:drawableRight="@drawable/ic_edit_input_clear"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+    >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_safety_textsize"
+            android:text="@string/safety_verify"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/activity_safety_textsize"
+            android:textColor="@color/black_transparent"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content">
+
+        <mvp.cool.master.layout.EdiTextClean
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:maxLength="6"
+            android:paddingLeft="18dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:textColorHint="#9b9b9b"
+            android:background="@drawable/safety_activty_phone_selector"
+            android:drawableRight="@drawable/ic_edit_input_clear"/>
+
+        <Button
+            android:text="获取验证码"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+       </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+    >
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="38dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="下一步"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"/>
+    </RelativeLayout>
+</LinearLayout>

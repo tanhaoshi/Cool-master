@@ -2,4 +2,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- safety dimens -->
+    <dimen name="activity_safety_center">38dp</dimen>
+    <dimen name="activity_safety_textsize">16dp</dimen>
+
+    <!--base toolbar text size -->
+    <dimen name="base_toolbar_textsize">16sp</dimen>
 </resources>

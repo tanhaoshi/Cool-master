@@ -79,10 +79,6 @@ public class OkHttpUtil {
         return false;
     }
 
-     //okHttp中注册的拦截器可以分成两类,分别是程序拦截器和网络拦截器
-     //第一个拦截器 配置日志打印 也为程序拦截器
-     //两者最大的不同就是程序拦截器只会对网络请求调用一次,
-     //然后拦截器返回的数据会直接从缓存中读取;而网络拦截器会进行两次的网络请求。
     private final Interceptor mLoginInterceptor = new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {
