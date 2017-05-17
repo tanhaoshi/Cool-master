@@ -22,6 +22,7 @@
             android:layout_height="@dimen/activity_safety_center"
             android:background="@color/black_transparent"/>
         <TextView
+            android:id="@+id/autonym"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/activity_safety_center"
             android:text="@string/safety_approve"
@@ -142,6 +143,7 @@
         android:layout_weight="1"
     >
         <Button
+            android:id="@+id/stepOne"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="38dp"
             android:layout_marginRight="16dp"

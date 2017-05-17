@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".mvp.ui.activity.HomeActivty"
-        android:theme="@style/CommonViewStyle">
+        <activity
+            android:name=".mvp.ui.activity.HomeActivty"
+            android:theme="@style/CommonViewStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,8 +20,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".mvp.ui.activity.SafetyCenterActivity"
-                  android:theme="@style/CommonViewStyle"></activity>
+        <activity
+            android:name=".mvp.ui.activity.SafetyCenterActivity"
+            android:theme="@style/CommonViewStyle"/>
+
+        <activity
+            android:name=".mvp.ui.activity.VerifyActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+
+        <activity android:name=".mvp.ui.activity.AutonymActivity"
+                  android:theme="@style/CommonViewStyle">
+        </activity>
 
     </application>
 

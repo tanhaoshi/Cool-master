@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_verify"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mvp.cool.master.mvp.ui.activity.VerifyActivity">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/safety_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/safety_phone"
+        />
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/safety_phone"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="恭喜你，手机号已绑定"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:background="@drawable/safety_activty_phone_selector"
+        android:layout_margin="16dp"
+        android:layout_weight="6">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/user_one"
+                android:layout_marginLeft="20dp"
+                android:layout_width="50dp"
+                android:layout_height="60dp"/>
+
+            <TextView
+                android:layout_marginLeft="27dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账号:刘某某"
+                android:textSize="16sp"
+            />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="45dp"
+            android:background="#000"
+            android:layout_width="1dp"
+            android:layout_height="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/user_two"
+                android:layout_marginLeft="20dp"
+                android:layout_width="50dp"
+                android:layout_height="60dp"/>
+
+
+            <TextView
+                android:layout_marginLeft="27dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="绑定手机:1536725XXXX"
+                android:textSize="16sp"
+            />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_margin="16dp"
+        android:text="确定"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"/>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mvp.cool.master.mvp.ui.activity.HomeActivty">
+
+    <include layout="@layout/common_toolbar"/>
+
+   <mvp.cool.master.layout.NoScrollViewPager
+       android:id="@+id/view_pager"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@null"
+       android:layout_weight="1"
+   >
+   </mvp.cool.master.layout.NoScrollViewPager>
+
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+        android:id="@+id/ahb_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.aurelhubert.ahbottomnavigation.AHBottomNavigation>
+
+
+</LinearLayout>
