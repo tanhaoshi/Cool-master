@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <Button
+        android:id="@+id/jump_location"
+        android:background="@color/white"
+        android:text="新增收货地址"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"/>
+
+</LinearLayout>

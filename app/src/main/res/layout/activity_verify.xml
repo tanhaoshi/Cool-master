@@ -6,9 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="mvp.cool.master.mvp.ui.activity.VerifyActivity">
 
     <include layout="@layout/base_toolbar"/>
+
+    <include layout="@layout/line_onedimens"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

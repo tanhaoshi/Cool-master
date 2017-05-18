@@ -6,7 +6,7 @@
     android:id="@+id/base_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimarys"
+    android:background="@color/white"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"
     >
@@ -16,9 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:paddingLeft="16dp"
+        android:src="@drawable/back"
+        android:paddingLeft="10dp"
         android:paddingRight="16dp"
-        android:src="@drawable/ic_title_back_white"
         android:visibility="gone" />
 
 
@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="@dimen/base_toolbar_textsize"
+        android:textColor="@color/black"
         tools:text="标题" />
 
     <TextView
@@ -38,7 +39,9 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:textSize="16sp"
         android:text="确定"
+        android:textColor="@color/black"
         android:visibility="gone" />
 
 

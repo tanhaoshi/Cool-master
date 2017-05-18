@@ -42,6 +42,12 @@
                   android:theme="@style/CommonViewStyle">
         </activity>
 
+        <activity android:name=".mvp.ui.activity.MeLocationActivty"
+                  android:theme="@style/CommonViewStyle"/>
+
+        <activity android:name=".mvp.ui.activity.LocationDetailActivity"
+                  android:theme="@style/CommonViewStyle"/>
+
     </application>
 
 </manifest>

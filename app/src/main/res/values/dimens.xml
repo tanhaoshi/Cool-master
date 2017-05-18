@@ -8,5 +8,5 @@
     <dimen name="activity_safety_textsize">16dp</dimen>
 
     <!--base toolbar text size -->
-    <dimen name="base_toolbar_textsize">16sp</dimen>
+    <dimen name="base_toolbar_textsize">17sp</dimen>
 </resources>

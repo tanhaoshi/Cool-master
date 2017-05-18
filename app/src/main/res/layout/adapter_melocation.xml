@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+     <TextView
+         android:text="刘纯纯"
+         android:textColor="@color/black"
+         android:textSize="16sp"
+         android:layout_marginLeft="16dp"
+         android:layout_marginTop="16dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="上海"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+         <TextView
+             android:layout_marginLeft="10dp"
+             android:text="上海市"
+             android:textSize="16sp"
+             android:textColor="@color/black"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:text="普陀区"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="曹阳九村20号666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="135****1378"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="常用"
+                android:textColor="@color/black"
+                android:background="@drawable/adapter_use_shape"
+                android:layout_width="70dp"
+                android:layout_height="25dp"/>
+
+            <View
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center"
+                android:layout_width="0.3dp"
+                android:layout_height="25dp"
+                android:background="@color/black"/>
+
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/redact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/line_onedimens"/>
+
+</LinearLayout>
