@@ -27,4 +27,8 @@
     <color name="black_transparent">#7f000000</color>
     <color name="line_bg">#e5e5e5</color>
     <color name="black">#000</color>
+    <color name="transplate_blue">#FFC6ECF7</color>
+    <color name="autocommit_base">#FFF4B242</color>
+    <color name="green">#FF56B749</color>
+    <color name="deep_yellow">#f2c77d</color>
 </resources>

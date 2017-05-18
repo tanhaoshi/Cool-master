@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_autonu_finsh"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mvp.cool.master.mvp.ui.activity.AutonuFinshActivity">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bound_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/activity_safety_center"
+            android:text="@string/safety_phone"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="0.3dp"
+            android:layout_height="@dimen/activity_safety_center"
+            android:background="@color/black_transparent"/>
+
+        <TextView
+            android:id="@+id/au_autonym"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/activity_safety_center"
+            android:text="@string/safety_approve"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:textColor="@color/autocommit_base"
+        android:text="@string/autonu_commit"/>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <mvp.cool.master.layout.CircleImageView
+            android:background="@drawable/autonu_finsh_shape"
+            android:layout_gravity="center"
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
+
+        <ImageView
+            android:src="@drawable/yes"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="请耐心等待!人工审核将在48h通过135****9893将结果以短信的方式通知你！"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:background="@drawable/autonufinsh_shape_style"
+        android:layout_height="80dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <Button
+        android:layout_margin="16dp"
+        android:text="确定"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"/>
+
+</LinearLayout>

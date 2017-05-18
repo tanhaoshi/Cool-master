@@ -9,7 +9,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".mvp.ui.activity.HomeActivty"
             android:theme="@style/CommonViewStyle">
@@ -29,7 +28,17 @@
             android:theme="@style/CommonViewStyle">
         </activity>
 
-        <activity android:name=".mvp.ui.activity.AutonymActivity"
+        <activity
+            android:name=".mvp.ui.activity.AutonymActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+
+        <activity
+            android:name=".mvp.ui.activity.AutonuCommitActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+
+        <activity android:name=".mvp.ui.activity.AutonuFinshActivity"
                   android:theme="@style/CommonViewStyle">
         </activity>
 

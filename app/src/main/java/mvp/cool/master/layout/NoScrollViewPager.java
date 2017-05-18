@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 
 public class NoScrollViewPager extends ViewPager {
 
+
     public NoScrollViewPager(Context context) {
         super(context);
     }

@@ -10,7 +10,7 @@
     <!-- me -->
     <string name="btn_click_login">退出登录</string>
     <string name="mine_follow">谭XX</string>
-    <string name="mine_fans">15367257793</string>
+    <string name="mine_fans">15377889903</string>
     <string name="mine_recharge">充值</string>
     <string name="mine_starlight">安全中心</string>
     <string name="mine_contribution">我的银行卡</string>
@@ -30,4 +30,14 @@
     <string name="safety_textthree">,并进行验证:</string>
     <string name="safety_textsemiclon">手机号码:</string>
     <string name="safety_verify">验证码:</string>
+
+    <!-- AutonymActivity layout -->
+    <string name="autonym_text">实名认证可以更好的保护用户账号安全。
+        实名认证的目的是验证用户所绑定的账户是否属于本人,确保账户中的资金
+        只可被提现到用户本人的银行卡中。
+    </string>
+
+    <!-- AutonuCommitActivity layout -->
+    <string name="autonu_commit">请如实填写你的信息，以确保你的合法权益得到保障!</string>
+
 </resources>
