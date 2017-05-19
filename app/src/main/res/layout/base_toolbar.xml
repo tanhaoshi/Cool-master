@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="@dimen/base_toolbar_textsize"
-        android:textColor="@color/black"
+        android:textColor="@color/deep_black"
         tools:text="标题" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:paddingRight="10dp"
         android:textSize="16sp"
         android:text="确定"
-        android:textColor="@color/black"
+        android:textColor="@color/deep_black"
         android:visibility="gone" />
 
 

@@ -44,7 +44,7 @@ public class SafetyCenterActivity extends BaseActivity<SafetyCenterPresenterImpl
 
     }
 
-    @OnClick({R.id.stepOne , R.id.autonym})
+    @OnClick({R.id.stepOne , R.id.autonym , R.id.base_iv_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.stepOne:
@@ -52,6 +52,9 @@ public class SafetyCenterActivity extends BaseActivity<SafetyCenterPresenterImpl
                 break;
             case R.id.autonym:
                 startActivityFinish(AutonymActivity.class);
+                break;
+            case R.id.base_iv_back:
+                finish();
                 break;
         }
     }

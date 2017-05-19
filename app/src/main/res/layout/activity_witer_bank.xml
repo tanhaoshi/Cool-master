@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_witer_bank"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="mvp.cool.master.mvp.ui.activity.WiterBankActivity">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <TextView
+        android:background="#FFF9F9F9"
+        android:layout_width="match_parent"
+        android:paddingLeft="16dp"
+        android:text="请绑定持卡人本人的银行卡"
+        android:gravity="center_vertical"
+        android:layout_height="36dp"/>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+    >
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_safety_textsize"
+            android:text="卡类型"
+            android:textSize="@dimen/activity_safety_textsize"
+            android:textColor="@color/black_transparent"
+        />
+
+        <mvp.cool.master.layout.EdiTextClean
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:hint="中国工商银行 储蓄卡"
+            android:textSize="15sp"
+            android:maxLength="11"
+            android:paddingLeft="8dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:textColorHint="@color/autocommit_base"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_edit_input_clear"
+        />
+
+    </LinearLayout>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+    >
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_safety_textsize"
+            android:text="手机号:"
+            android:textSize="@dimen/activity_safety_textsize"
+            android:textColor="@color/black_transparent"
+        />
+
+        <mvp.cool.master.layout.EdiTextClean
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:hint="银行预留手机号码"
+            android:textSize="15sp"
+            android:maxLength="11"
+            android:paddingLeft="8dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:textColorHint="#9b9b9b"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_edit_input_clear"
+        />
+
+    </LinearLayout>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:text="同意"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="@color/autocommit_base"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:text="《服务协议》"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/stepDown"
+        android:text="下一步"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"/>
+
+</LinearLayout>

@@ -18,11 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".mvp.ui.activity.SafetyCenterActivity"
             android:theme="@style/CommonViewStyle"/>
-
         <activity
             android:name=".mvp.ui.activity.VerifyActivity"
             android:theme="@style/CommonViewStyle">
@@ -38,16 +36,36 @@
             android:theme="@style/CommonViewStyle">
         </activity>
 
-        <activity android:name=".mvp.ui.activity.AutonuFinshActivity"
-                  android:theme="@style/CommonViewStyle">
+        <activity
+            android:name=".mvp.ui.activity.AutonuFinshActivity"
+            android:theme="@style/CommonViewStyle">
         </activity>
 
-        <activity android:name=".mvp.ui.activity.MeLocationActivty"
-                  android:theme="@style/CommonViewStyle"/>
+        <activity
+            android:name=".mvp.ui.activity.MeLocationActivty"
+            android:theme="@style/CommonViewStyle"/>
 
-        <activity android:name=".mvp.ui.activity.LocationDetailActivity"
-                  android:theme="@style/CommonViewStyle"/>
+        <activity
+            android:name=".mvp.ui.activity.LocationDetailActivity"
+            android:theme="@style/CommonViewStyle"/>
+        <activity
+            android:name=".mvp.ui.activity.MeBankActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
 
+        <activity
+            android:name=".mvp.ui.activity.AddBankActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+
+        <activity
+            android:name=".mvp.ui.activity.WiterBankActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+
+        <activity android:name=".mvp.ui.activity.MyBankActivity"
+                  android:theme="@style/CommonViewStyle">
+        </activity>
     </application>
 
 </manifest>

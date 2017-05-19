@@ -40,11 +40,14 @@ public class AutonuCommitActivity extends BaseActivity{
 
     }
 
-    @OnClick({R.id.autonu_finsh})
+    @OnClick({R.id.autonu_finsh , R.id.base_iv_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.autonu_finsh:
                 startActivityFinish(AutonuFinshActivity.class);
+                break;
+            case R.id.base_iv_back:
+                finish();
                 break;
         }
     }

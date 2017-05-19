@@ -1,22 +1,27 @@
 package mvp.cool.master.mvp.ui.activity;
 
 import android.view.View;
+import android.widget.Button;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import mvp.cool.master.R;
 import mvp.cool.master.mvp.ui.activity.base.BaseActivity;
 
-public class AutonuFinshActivity extends BaseActivity {
+public class WiterBankActivity extends BaseActivity {
+
+    @BindView(R.id.stepDown)
+    Button stepDown;
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_autonu_finsh;
+        return R.layout.activity_witer_bank;
     }
 
     @Override
     protected void initView() {
-        base_title.setText("安全中心");
         base_image.setVisibility(View.VISIBLE);
+        base_title.setText("填写银行卡信息");
     }
 
     @Override
@@ -29,14 +34,11 @@ public class AutonuFinshActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.base_iv_back ,R.id.commitBtn})
+    @OnClick({R.id.stepDown})
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.base_iv_back:
-                finish();
-                break;
-            case R.id.commitBtn:
-                finish();
+            case R.id.stepDown:
+                startActivityFinish(MyBankActivity.class);
                 break;
         }
     }

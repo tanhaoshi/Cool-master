@@ -9,6 +9,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import mvp.cool.master.R;
 import mvp.cool.master.layout.CircleImageView;
+import mvp.cool.master.mvp.ui.activity.MeBankActivity;
 import mvp.cool.master.mvp.ui.activity.MeLocationActivty;
 import mvp.cool.master.mvp.ui.activity.SafetyCenterActivity;
 import mvp.cool.master.mvp.ui.fragment.base.BaseFragment;
@@ -112,6 +113,7 @@ public class UserFragment extends BaseFragment{
                 meSafetycenter();
                 break;
             case R.id.meBank:
+                startActivityFinish(MeBankActivity.class);
                 break;
             case R.id.meBill:
                 break;

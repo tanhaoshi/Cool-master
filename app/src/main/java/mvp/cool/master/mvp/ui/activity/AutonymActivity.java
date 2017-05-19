@@ -40,7 +40,7 @@ public class AutonymActivity extends BaseActivity<AutonymPresenterImpl>{
 
     }
 
-    @OnClick({R.id.au_autonym , R.id.bound_phone , R.id.autonym_approve})
+    @OnClick({R.id.au_autonym , R.id.bound_phone , R.id.autonym_approve,R.id.base_iv_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.au_autonym:
@@ -50,6 +50,9 @@ public class AutonymActivity extends BaseActivity<AutonymPresenterImpl>{
                 break;
             case R.id.autonym_approve:
                 startActivityFinish(AutonuCommitActivity.class);
+                break;
+            case R.id.base_iv_back:
+                finish();
                 break;
         }
     }

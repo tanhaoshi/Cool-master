@@ -91,6 +91,7 @@
         android:layout_height="30dp"/>
 
     <Button
+        android:id="@+id/commitBtn"
         android:layout_margin="16dp"
         android:text="确定"
         android:layout_width="match_parent"
