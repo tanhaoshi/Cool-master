@@ -22,18 +22,44 @@
         android:drawableRight="@drawable/ic_edit_input_clear"
     />
 
-    <mvp.cool.master.layout.EdiTextClean
+    <LinearLayout
+        android:id="@+id/all_city"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:textSize="14sp"
-        android:maxLength="11"
-        android:paddingLeft="18dp"
-        android:paddingRight="10dp"
-        android:textColorHint="#9b9b9b"
-        android:hint="区域选择"
-        android:background="@drawable/safety_activty_phone_selector"
-        android:drawableRight="@drawable/ic_edit_input_clear"
-    />
+        android:layout_height="42dp">
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="10dp"
+            android:text="区域选择"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="10dp"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/Province"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="10dp"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <mvp.cool.master.layout.EdiTextClean
         android:layout_width="match_parent"
@@ -78,18 +104,32 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"/>
 
-        <Switch
-            android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:thumb="@drawable/switch_thumb"
-            android:track="@drawable/switch_track"
-            />
+       <android.support.v7.widget.SwitchCompat
+           android:id="@+id/sc_settin_testxinlv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_vertical"
+           android:layout_marginBottom="10dp"
+           android:layout_marginRight="20dp"
+           android:layout_marginTop="10dp"
+           />
 
     </LinearLayout>
 
     <include layout="@layout/line_onedimens"/>
 
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></LinearLayout>
+
+    <Button
+        android:text="保存"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"/>
 </LinearLayout>

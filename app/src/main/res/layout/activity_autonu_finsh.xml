@@ -6,9 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="mvp.cool.master.mvp.ui.activity.AutonuFinshActivity">
 
     <include layout="@layout/base_toolbar"/>
+
+    <include layout="@layout/line_onedimens"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,13 +75,16 @@
         android:gravity="center_vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="请耐心等待!人工审核将在48h通过135****9893将结果以短信的方式通知你！"
         android:layout_marginTop="10dp"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:background="@drawable/autonufinsh_shape_style"
-        android:layout_height="80dp"/>
+        android:layout_height="80dp"
+        android:id="@+id/textView"/>
 
     <TextView
         android:layout_width="match_parent"

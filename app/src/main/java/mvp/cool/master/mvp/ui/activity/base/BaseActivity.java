@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -80,6 +81,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     private void initComponent(){
         component = DaggerActivityComponent.builder().activityModule(new ActivityModule(this)).build();
         inject();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("BaseActivity",getClass().getSimpleName().toString());
     }
 
     @Override
