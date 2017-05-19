@@ -34,11 +34,14 @@ public class MeBankActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.addBank})
+    @OnClick({R.id.addBank , R.id.base_iv_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.addBank:
                 startActivityFinish(AddBankActivity.class);
+                break;
+            case R.id.base_iv_back:
+                finish();
                 break;
         }
     }

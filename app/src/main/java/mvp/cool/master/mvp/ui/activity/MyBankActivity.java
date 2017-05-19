@@ -34,10 +34,13 @@ public class MyBankActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.stepDown})
+    @OnClick({R.id.stepDown , R.id.base_iv_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.stepDown:
+                finish();
+                break;
+            case R.id.base_iv_back:
                 finish();
                 break;
         }

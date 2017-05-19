@@ -148,11 +148,17 @@ public class LocationDetailActivity extends BaseActivity{
         }
     };
 
-     @OnClick({R.id.all_city})
+     @OnClick({R.id.all_city , R.id.base_iv_back , R.id.saveBtn})
      public void onClick(View view){
          switch (view.getId()){
              case R.id.all_city:
                  showLocation();
+                 break;
+             case R.id.base_iv_back:
+                 finish();
+                 break;
+             case R.id.saveBtn:
+                 finish();
                  break;
          }
      }

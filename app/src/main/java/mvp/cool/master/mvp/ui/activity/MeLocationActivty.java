@@ -45,10 +45,16 @@ public class MeLocationActivty extends BaseActivity{
 
     }
 
-    @OnClick({R.id.jump_location})
+    @OnClick({R.id.jump_location , R.id.base_iv_back , R.id.base_tv_toolbar_right})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.jump_location:
+                startActivityFinish(LocationDetailActivity.class);
+                break;
+            case R.id.base_iv_back:
+                finish();
+                break;
+            case R.id.base_tv_toolbar_right:
                 startActivityFinish(LocationDetailActivity.class);
                 break;
         }

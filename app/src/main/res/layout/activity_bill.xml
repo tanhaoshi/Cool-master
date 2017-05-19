@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_bill"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mvp.cool.master.mvp.ui.activity.BillActivity">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <include layout="@layout/line_onedimens"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/billRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>
