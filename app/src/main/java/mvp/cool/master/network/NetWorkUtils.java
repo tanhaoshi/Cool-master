@@ -68,7 +68,6 @@ public class NetWorkUtils {
         };
     }
 
-
     /**
      * Create an implementation of the API endpoints defined by the {@code service} interface.
      * @param service 服务接口

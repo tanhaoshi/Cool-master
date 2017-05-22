@@ -2,6 +2,11 @@
 <manifest package="mvp.cool.master"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -18,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".mvp.ui.activity.SafetyCenterActivity"
             android:theme="@style/CommonViewStyle"/>
@@ -25,14 +31,17 @@
             android:name=".mvp.ui.activity.VerifyActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
+
         <activity
             android:name=".mvp.ui.activity.AutonymActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
+
         <activity
             android:name=".mvp.ui.activity.AutonuCommitActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
+
         <activity
             android:name=".mvp.ui.activity.AutonuFinshActivity"
             android:theme="@style/CommonViewStyle">
@@ -55,13 +64,28 @@
             android:name=".mvp.ui.activity.WiterBankActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
+
         <activity
             android:name=".mvp.ui.activity.MyBankActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
-        <activity android:name=".mvp.ui.activity.BillActivity"
-                  android:theme="@style/CommonViewStyle">
+
+        <activity
+            android:name=".mvp.ui.activity.BillActivity"
+            android:theme="@style/CommonViewStyle">
         </activity>
+
+        <activity
+            android:name=".mvp.ui.activity.QrCodeActivity"
+            android:theme="@style/CommonViewStyle"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity android:name=".mvp.ui.activity.OneSweepActivity"
+                  android:theme="@style/CommonViewStyle"
+                  android:launchMode="singleTask">
+        </activity>
+
     </application>
 
 </manifest>

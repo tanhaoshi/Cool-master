@@ -12,6 +12,7 @@ import mvp.cool.master.layout.CircleImageView;
 import mvp.cool.master.mvp.ui.activity.BillActivity;
 import mvp.cool.master.mvp.ui.activity.MeBankActivity;
 import mvp.cool.master.mvp.ui.activity.MeLocationActivty;
+import mvp.cool.master.mvp.ui.activity.QrCodeActivity;
 import mvp.cool.master.mvp.ui.activity.SafetyCenterActivity;
 import mvp.cool.master.mvp.ui.fragment.base.BaseFragment;
 
@@ -131,6 +132,7 @@ public class UserFragment extends BaseFragment{
             case R.id.mine_recommond:
                 break;
             case R.id.mine_consume:
+                startActivityFinish(QrCodeActivity.class);
                 break;
         }
     }

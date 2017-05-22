@@ -111,5 +111,4 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void startActivity(Class<?> cls){
         startActivity(getIntent(cls));
     }
-
 }
