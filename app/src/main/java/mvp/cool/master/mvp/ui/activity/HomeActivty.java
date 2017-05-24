@@ -1,5 +1,6 @@
 package mvp.cool.master.mvp.ui.activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -9,12 +10,14 @@ import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import mvp.cool.master.App;
+import mvp.cool.master.Constant;
 import mvp.cool.master.R;
 import mvp.cool.master.mvp.presenter.impl.HomePresenterImpl;
 import mvp.cool.master.mvp.ui.activity.base.BaseActivity;
@@ -23,6 +26,7 @@ import mvp.cool.master.mvp.ui.fragment.HomePagerFragment;
 import mvp.cool.master.mvp.ui.fragment.RimFragmnet;
 import mvp.cool.master.mvp.ui.fragment.ShopFragment;
 import mvp.cool.master.mvp.ui.fragment.UserFragment;
+import mvp.cool.master.service.DownLoadService;
 
 public class HomeActivty extends BaseActivity<HomePresenterImpl>{
 
@@ -34,6 +38,8 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
     private long oldOutTime;
 
     private final List<Fragment>  mFragmentList = new ArrayList<Fragment>();
+
+    private Intent mIntent;
 
     @Override
     protected int getContentView() {
@@ -55,6 +61,7 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
         initListenner();
         initFragment();
         setViewpagerAdapter();
+        intentSerivce();
     }
 
     private void initTabs(){
@@ -135,5 +142,23 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        KLog.i("HomeActivity() ~~~~~~ onDestroy()");
+        mIntent = new Intent(HomeActivty.this , DownLoadService.class);
+        mIntent.putExtra(Constant.SERVICE_FLAG , Constant.STOP_SERVICE);
+        mIntent.putExtra("flag" , false);
+        startService(mIntent);
+        stopService(mIntent);
+    }
+
+    private void intentSerivce(){
+        mIntent = new Intent(HomeActivty.this , DownLoadService.class);
+        mIntent.putExtra(Constant.SERVICE_FLAG ,Constant.START_SERVICE);
+        mIntent.putExtra("flag" , true);
+        startService(mIntent);
     }
 }

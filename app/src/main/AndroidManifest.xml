@@ -86,6 +86,7 @@
                   android:launchMode="singleTask">
         </activity>
 
+        <service android:name=".service.DownLoadService"/>
     </application>
 
 </manifest>
