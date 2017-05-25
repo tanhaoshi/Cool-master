@@ -30,7 +30,7 @@
     </style>
 
     <style name="ToolbarCenterTitle">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">#9b9b9b</item>
     </style>
 

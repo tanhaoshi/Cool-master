@@ -8,8 +8,6 @@
     android:orientation="vertical"
     tools:context="mvp.cool.master.mvp.ui.activity.HomeActivty">
 
-    <include layout="@layout/common_toolbar"/>
-
    <mvp.cool.master.layout.NoScrollViewPager
        android:id="@+id/view_pager"
        android:layout_width="match_parent"

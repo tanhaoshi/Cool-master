@@ -16,7 +16,6 @@ import mvp.cool.master.R;
 import mvp.cool.master.inject.component.ActivityComponent;
 import mvp.cool.master.inject.component.DaggerActivityComponent;
 import mvp.cool.master.inject.model.ActivityModule;
-import mvp.cool.master.layout.TextViewAnimotion;
 import mvp.cool.master.mvp.presenter.base.impl.BasePresenter;
 
 /**
@@ -28,10 +27,10 @@ import mvp.cool.master.mvp.presenter.base.impl.BasePresenter;
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity{
 
     protected ActivityComponent component;
-    protected Toolbar toolbar;
-    protected ImageView iv_back;
-    protected TextViewAnimotion title;
-    protected ImageView tv_right;
+    //protected Toolbar toolbar;
+    //protected ImageView iv_back;
+    //protected TextViewAnimotion title;
+    //protected ImageView tv_right;
     protected Toolbar base_toolbar;
     protected ImageView base_image;
     protected TextView base_title;
@@ -52,10 +51,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
 
     private void initTooBar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        iv_back = (ImageView) findViewById(R.id.iv_back);
-        title = (TextViewAnimotion) findViewById(R.id.tv_toolbar_title);
-        tv_right = (ImageView) findViewById(R.id.tv_toolbar_right);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        iv_back = (ImageView) findViewById(R.id.iv_back);
+//        title = (TextViewAnimotion) findViewById(R.id.tv_toolbar_title);
+//        tv_right = (ImageView) findViewById(R.id.tv_toolbar_right);
 
         base_toolbar = (Toolbar) findViewById(R.id.base_toolbar);
         base_image = (ImageView) findViewById(R.id.base_iv_back);

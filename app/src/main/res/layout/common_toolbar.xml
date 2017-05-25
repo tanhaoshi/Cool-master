@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_width="wrap_content"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
     app:contentInsetLeft="0dp"
@@ -12,8 +13,8 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@drawable/toobar_selector"
@@ -28,13 +29,14 @@
             android:src="@drawable/toolbar_search"
              />
 
-        <mvp.cool.master.layout.TextViewAnimotion
+        <EditText
             android:id="@+id/tv_toolbar_title"
             style="@style/ToolbarCenterTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:hint="寻找服务/商家/资讯"
             android:background="@null"
            />
 
@@ -44,7 +46,7 @@
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:background="@drawable/selector_title_image"
-            android:src="@drawable/toolbar_music"
+            android:src="@drawable/listener"
             android:paddingRight="5dp"
             />
     </LinearLayout>

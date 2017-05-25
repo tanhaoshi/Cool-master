@@ -1,25 +1,21 @@
 package mvp.cool.master.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import mvp.cool.master.App;
-import mvp.cool.master.Constant;
 import mvp.cool.master.R;
 import mvp.cool.master.mvp.presenter.impl.HomePresenterImpl;
 import mvp.cool.master.mvp.ui.activity.base.BaseActivity;
@@ -28,7 +24,6 @@ import mvp.cool.master.mvp.ui.fragment.HomePagerFragment;
 import mvp.cool.master.mvp.ui.fragment.RimFragmnet;
 import mvp.cool.master.mvp.ui.fragment.ShopFragment;
 import mvp.cool.master.mvp.ui.fragment.UserFragment;
-import mvp.cool.master.service.DownLoadService;
 
 public class HomeActivty extends BaseActivity<HomePresenterImpl>{
 
@@ -41,7 +36,7 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
 
     private final List<Fragment>  mFragmentList = new ArrayList<Fragment>();
 
-    private Intent mIntent;
+    //private Intent mIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +63,7 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
         initListenner();
         initFragment();
         setViewpagerAdapter();
-        intentSerivce();
+        //intentSerivce();
     }
 
     private void initTabs(){
@@ -109,19 +104,15 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
         switch (position) {
             case 0:
                 mViewPager.setCurrentItem(position);
-                toolbar.setVisibility(View.VISIBLE);
                 break;
             case 1:
                 mViewPager.setCurrentItem(position);
-                toolbar.setVisibility(View.VISIBLE);
                 break;
             case 2:
                 mViewPager.setCurrentItem(position);
-                toolbar.setVisibility(View.GONE);
                 break;
             case 3:
                 mViewPager.setCurrentItem(position);
-                toolbar.setVisibility(View.GONE);
         }
     }
 
@@ -154,18 +145,18 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        KLog.i("HomeActivity() ~~~~~~ onDestroy()");
-        mIntent = new Intent(HomeActivty.this , DownLoadService.class);
-        mIntent.putExtra(Constant.SERVICE_FLAG , Constant.STOP_SERVICE);
-        mIntent.putExtra("flag" , false);
-        startService(mIntent);
-        stopService(mIntent);
+//        KLog.i("HomeActivity() ~~~~~~ onDestroy()");
+//        mIntent = new Intent(HomeActivty.this , DownLoadService.class);
+//        mIntent.putExtra(Constant.SERVICE_FLAG , Constant.STOP_SERVICE);
+//        mIntent.putExtra("flag" , false);
+//        startService(mIntent);
+//        stopService(mIntent);
     }
 
     private void intentSerivce(){
-        mIntent = new Intent(HomeActivty.this , DownLoadService.class);
-        mIntent.putExtra(Constant.SERVICE_FLAG ,Constant.START_SERVICE);
-        mIntent.putExtra("flag" , true);
-        startService(mIntent);
+//        mIntent = new Intent(HomeActivty.this , DownLoadService.class);
+//        mIntent.putExtra(Constant.SERVICE_FLAG ,Constant.START_SERVICE);
+//        mIntent.putExtra("flag" , true);
+//        startService(mIntent);
     }
 }
