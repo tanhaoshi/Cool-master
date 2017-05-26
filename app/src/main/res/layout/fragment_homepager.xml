@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -26,9 +26,23 @@
         <ImageView
             android:src="@drawable/toolbar_keteball"
             android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <mvp.cool.master.layout.RecyclerScrollView
+        android:id="@+id/scrollView_id"
+        android:background="@null"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <com.youth.banner.Banner
             android:id="@+id/banner"
@@ -215,13 +229,23 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/lanadd"
         />
-
     </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:background="@color/white"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+          </RelativeLayout>
+        </LinearLayout>
+
+    </mvp.cool.master.layout.RecyclerScrollView>
 
 </LinearLayout>

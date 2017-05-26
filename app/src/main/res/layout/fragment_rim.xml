@@ -1,7 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/rimqrdcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <include layout="@layout/common_toolbar"/>
+
+        <ImageView
+            android:src="@drawable/talking"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <mvp.cool.master.layout.RecyclerScrollView
+        android:id="@+id/scrollView_id"
+        android:background="@null"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="173dp"
+                app:indicator_drawable_selected="@drawable/banner_red"
+                app:indicator_drawable_unselected="@drawable/banner_grey"
+                app:indicator_height="9dp"
+                app:indicator_margin="3dp"
+                app:indicator_width="9dp">
+            </com.youth.banner.Banner>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="170dp">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:paddingTop="10dp"
+                        android:text="扫一扫"
+                        android:drawablePadding="5dp"
+                        android:textSize="12sp"
+                        android:drawableTop="@drawable/saoyisao"
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="快捷支付"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:drawablePadding="5dp"
+                        android:paddingTop="10dp"
+                        android:drawableTop="@drawable/pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="附近加油"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:drawableTop="@drawable/jiayou"
+                        android:paddingTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="低车保险"
+                        android:textSize="12sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:paddingTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/baoxian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:paddingTop="10dp"
+                        android:text="ETC服务"
+                        android:drawablePadding="5dp"
+                        android:textSize="12sp"
+                        android:drawableTop="@drawable/etc"
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="正品保养"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:drawablePadding="5dp"
+                        android:paddingTop="10dp"
+                        android:drawableTop="@drawable/baoyang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="汽车配件"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:drawableTop="@drawable/peijian"
+                        android:paddingTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="其它"
+                        android:textSize="12sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:paddingTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/qita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/base_iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/lanback"
+                />
+                <TextView
+                    android:id="@+id/superMaketHome"
+                    android:layout_marginRight="5dp"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:text="周边商店"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"/>
+
+                <ImageView
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/lanadd"
+                />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:background="@color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </mvp.cool.master.layout.RecyclerScrollView>
 
 </LinearLayout>

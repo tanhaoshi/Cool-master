@@ -18,7 +18,7 @@ public class MeLocationAdapter extends BaseQuickAdapter<AddLocation , BaseViewHo
 
 
     public MeLocationAdapter(List<AddLocation> addLocation){
-        super(R.layout.activity_autonu_finsh , addLocation);
+        super(R.layout.adapter_melocation , addLocation);
     }
 
     @Override

@@ -40,4 +40,9 @@
     <color name="parking">#e4849c</color>
     <color name="bank">#76c8f9</color>
     <color name="superMaket">#f7c25b</color>
+
+    <!-- fragment shop -->
+    <color name="title_bg_color">#fafafa</color>
+    <color name="tab_text_color_normal">#A7A7A7</color>
+    <color name="tab_text_color_selected">#FFF4B242</color>
 </resources>

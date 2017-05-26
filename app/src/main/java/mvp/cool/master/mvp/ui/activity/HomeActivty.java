@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -88,6 +89,7 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
         mNavigation.setColored(false);
         // Set current item programmatically
         mNavigation.setCurrentItem(0);
+        HomePagerFragment.newInstance(mNavigation);
     }
 
     private void initListenner(){
@@ -104,15 +106,20 @@ public class HomeActivty extends BaseActivity<HomePresenterImpl>{
         switch (position) {
             case 0:
                 mViewPager.setCurrentItem(position);
+                mNavigation.setVisibility(View.VISIBLE);
                 break;
             case 1:
                 mViewPager.setCurrentItem(position);
+                mNavigation.setVisibility(View.VISIBLE);
                 break;
             case 2:
                 mViewPager.setCurrentItem(position);
+                mNavigation.setVisibility(View.GONE);
+                ShopFragment.newInstance(mViewPager);
                 break;
             case 3:
                 mViewPager.setCurrentItem(position);
+                mNavigation.setVisibility(View.VISIBLE);
         }
     }
 
