@@ -16,7 +16,10 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.services.core.PoiItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,6 +31,7 @@ import mvp.cool.master.layout.layoutmanager.DriverItemDecoration;
 import mvp.cool.master.layout.layoutmanager.VerticalLayoutManager;
 import mvp.cool.master.mvp.ui.adapter.PoiSearchAdapter;
 import mvp.cool.master.mvp.ui.fragment.base.BaseFragment;
+import mvp.cool.master.utils.GildeImageLoader;
 
 /**
  * @version 1.0
@@ -46,6 +50,8 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
     TextView superMaketHome;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
+    @BindView(R.id.banner)
+    Banner mBanner;
 
     private String strText;
     private String city;
@@ -58,6 +64,9 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
     private Double amapLong;
     private PoiSearchTask mPoiSearchTask;
     private PoiSearchAdapter mPoiSearchAdapter;
+
+    private int[] image = new int[]{R.drawable.beach , R.drawable.beijing, R.drawable.milu};
+    private ArrayList<Integer> imagesList = new ArrayList<>();
 
     private static AHBottomNavigation mNavigation;
 
@@ -82,6 +91,7 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
     @Override
     protected void initView(View view) {
         requestPermiSsiongs();
+        initBananer();
     }
 
     @Override
@@ -240,12 +250,32 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
         mRecyclerView.setAdapter(mPoiSearchAdapter);
     }
 
+    private void initBananer(){
+        bannerData();
+        mBanner.isAutoPlay(true);
+        mBanner.setDelayTime(4500);
+        mBanner.setIndicatorGravity(BannerConfig.RIGHT);
+        mBanner.setImages(imagesList).setImageLoader(new GildeImageLoader()).start();
+    }
+
+    private ArrayList bannerData(){
+        for(int i:image){
+            imagesList.add(i);
+        }
+        return imagesList;
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser){
             mNavigation.setVisibility(View.VISIBLE);
             mNavigation.setCurrentItem(0);
+            if(mBanner != null){
+                mBanner.startAutoPlay();
+            }
+        }else if(mBanner != null){
+            mBanner.stopAutoPlay();
         }
     }
 }

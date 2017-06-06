@@ -61,8 +61,6 @@ public class ShopFragment extends BaseFragment{
 
     }
 
-
-
     @OnClick({R.id.iv_back})
     public void onClick(View view){
         switch (view.getId()){
@@ -71,4 +69,5 @@ public class ShopFragment extends BaseFragment{
                 break;
         }
     }
+
 }

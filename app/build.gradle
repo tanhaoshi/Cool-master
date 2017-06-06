@@ -88,4 +88,5 @@ dependencies {
     compile files('libs/AMap_Search_V5.1.0_20170517.jar')
     compile 'com.youth.banner:banner:1.4.2'
     compile 'com.alibaba:fastjson:1.2.10'
+    compile 'com.github.hss01248:DialogUtil:1.0.7'
 }

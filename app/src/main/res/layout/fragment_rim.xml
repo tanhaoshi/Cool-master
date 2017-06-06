@@ -30,6 +30,19 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <include layout="@layout/line_onedimens"/>
+
+    <TextView
+        android:id="@+id/rimLocation"
+        android:layout_marginLeft="8dp"
+        android:drawableLeft="@drawable/rimlocation"
+        android:text="定位中..."
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"/>
+
     <mvp.cool.master.layout.RecyclerScrollView
         android:id="@+id/scrollView_id"
         android:background="@null"
@@ -66,44 +79,47 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
-                        android:layout_weight="1"
-                        android:paddingTop="10dp"
-                        android:text="扫一扫"
-                        android:drawablePadding="5dp"
-                        android:textSize="12sp"
-                        android:drawableTop="@drawable/saoyisao"
-                        android:textAlignment="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:text="快捷支付"
-                        android:textAlignment="center"
-                        android:layout_weight="1"
-                        android:textSize="12sp"
-                        android:drawablePadding="5dp"
-                        android:paddingTop="10dp"
-                        android:drawableTop="@drawable/pay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
+                        android:id="@+id/rimOizl"
                         android:text="附近加油"
+                        android:textSize="12sp"
                         android:textAlignment="center"
                         android:layout_weight="1"
-                        android:textSize="12sp"
-                        android:drawableTop="@drawable/jiayou"
                         android:paddingTop="10dp"
                         android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/rimoil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="汽车修理"
+                        android:textSize="12sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:paddingTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/repail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:text="低车保险"
+                        android:text="停车场"
                         android:textSize="12sp"
                         android:textAlignment="center"
                         android:layout_weight="1"
                         android:paddingTop="10dp"
                         android:drawablePadding="5dp"
-                        android:drawableTop="@drawable/baoxian"
+                        android:drawableTop="@drawable/parking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="银行"
+                        android:textSize="12sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:paddingTop="10dp"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/rimbank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -116,41 +132,41 @@
                     <TextView
                         android:layout_weight="1"
                         android:paddingTop="10dp"
-                        android:text="ETC服务"
+                        android:text="服务区"
                         android:drawablePadding="5dp"
                         android:textSize="12sp"
-                        android:drawableTop="@drawable/etc"
+                        android:drawableTop="@drawable/rimservice"
                         android:textAlignment="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:text="正品保养"
+                        android:text="洗车"
                         android:textAlignment="center"
                         android:layout_weight="1"
                         android:textSize="12sp"
                         android:drawablePadding="5dp"
                         android:paddingTop="10dp"
-                        android:drawableTop="@drawable/baoyang"
+                        android:drawableTop="@drawable/carwarsh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:text="汽车配件"
+                        android:text="餐馆"
                         android:textAlignment="center"
                         android:layout_weight="1"
                         android:textSize="12sp"
-                        android:drawableTop="@drawable/peijian"
+                        android:drawableTop="@drawable/rimmount"
                         android:paddingTop="10dp"
                         android:drawablePadding="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:text="其它"
+                        android:text="更多"
                         android:textSize="12sp"
                         android:textAlignment="center"
                         android:layout_weight="1"
                         android:paddingTop="10dp"
                         android:drawablePadding="5dp"
-                        android:drawableTop="@drawable/qita"
+                        android:drawableTop="@drawable/rimadd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -162,41 +178,53 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
 
-                <ImageView
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/base_iv_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/lanback"
-                />
-                <TextView
-                    android:id="@+id/superMaketHome"
-                    android:layout_marginRight="5dp"
-                    android:textAlignment="center"
+                <View
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimaryDark"
                     android:layout_weight="1"
-                    android:text="周边商店"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"/>
+                    android:layout_height="1dp"/>
 
                 <ImageView
                     android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/base_iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/puzi"
+                />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ziti"
+                />
+
+                <ImageView
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
                     android:id="@+id/add"
                     android:layout_width="wrap_content"
-                    android:layout_height="15dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/lanadd"
+                    android:src="@drawable/puzi"
                 />
+
+                <View
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"/>
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants">
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/rimRecyclerView"
                     android:background="@color/white"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"

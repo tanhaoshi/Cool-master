@@ -45,4 +45,8 @@
     <color name="title_bg_color">#fafafa</color>
     <color name="tab_text_color_normal">#A7A7A7</color>
     <color name="tab_text_color_selected">#FFF4B242</color>
+    <color name="flag_green">#65a500</color>
+    <color name="red">#ff2200</color>
+    <color name="yellow">#FFFA9903</color>
+    <color name="yellow_flag">#f7ae3e</color>
 </resources>

@@ -27,10 +27,6 @@ import mvp.cool.master.mvp.presenter.base.impl.BasePresenter;
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity{
 
     protected ActivityComponent component;
-    //protected Toolbar toolbar;
-    //protected ImageView iv_back;
-    //protected TextViewAnimotion title;
-    //protected ImageView tv_right;
     protected Toolbar base_toolbar;
     protected ImageView base_image;
     protected TextView base_title;

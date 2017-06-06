@@ -110,7 +110,19 @@
 
         <service android:name=".service.DownLoadService"/>
 
-        <activity android:name=".mvp.ui.activity.ShopActivity"
+        <activity
+            android:name=".mvp.ui.activity.ShopActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.NearByOizlActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.RimOizlActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity android:name=".mvp.ui.activity.NameTitlePayActivity"
                   android:theme="@style/CommonViewStyle">
         </activity>
     </application>
