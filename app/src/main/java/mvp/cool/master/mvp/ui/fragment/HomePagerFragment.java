@@ -3,6 +3,7 @@ package mvp.cool.master.mvp.ui.fragment;
 import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +39,8 @@ import mvp.cool.master.utils.GildeImageLoader;
  * @author TanHaoShi
  * Created by Administrator on 2017/5/17.
  */
-public class HomePagerFragment extends BaseFragment implements LocationSource, AMapLocationListener ,PoiSearchTask.PoiSearchData {
+public class HomePagerFragment extends BaseFragment implements
+        LocationSource, AMapLocationListener ,PoiSearchTask.PoiSearchData {
 
     @BindView(R.id.laundryHome)
     TextView laundryHome;
@@ -52,6 +54,8 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
     RecyclerView mRecyclerView;
     @BindView(R.id.banner)
     Banner mBanner;
+    @BindView(R.id.refreshLayout)
+    SwipeRefreshLayout mRefreshLayout;
 
     private String strText;
     private String city;
@@ -158,6 +162,7 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
     }
 
     private void requestPermiSsiongs() {
+        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.yellow),getResources().getColor(R.color.bank));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -166,6 +171,7 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
         }else{
             initLoc();
         }
+        initListener();
     }
 
     @OnClick({R.id.laundryHome ,R.id.parkingHome ,R.id.bankHome ,R.id.superMaketHome })
@@ -263,6 +269,16 @@ public class HomePagerFragment extends BaseFragment implements LocationSource, A
             imagesList.add(i);
         }
         return imagesList;
+    }
+
+    private void initListener(){
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initLoc();
+                mRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override

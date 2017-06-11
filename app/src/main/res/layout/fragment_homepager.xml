@@ -31,6 +31,11 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <mvp.cool.master.layout.RecyclerScrollView
         android:id="@+id/scrollView_id"
         android:background="@null"
@@ -251,6 +256,6 @@
           </RelativeLayout>
         </LinearLayout>
 
-    </mvp.cool.master.layout.RecyclerScrollView>
-
+      </mvp.cool.master.layout.RecyclerScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

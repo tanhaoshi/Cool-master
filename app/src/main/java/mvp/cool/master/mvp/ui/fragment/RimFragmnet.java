@@ -3,6 +3,7 @@ package mvp.cool.master.mvp.ui.fragment;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,7 @@ import mvp.cool.master.R;
 import mvp.cool.master.callback.RimPoiSearchTask;
 import mvp.cool.master.layout.layoutmanager.DriverItemDecoration;
 import mvp.cool.master.layout.layoutmanager.VerticalLayoutManager;
+import mvp.cool.master.mvp.ui.activity.CarRepairMapActivity;
 import mvp.cool.master.mvp.ui.activity.NearByOizlActivity;
 import mvp.cool.master.mvp.ui.adapter.VehicleRepailAdapter;
 import mvp.cool.master.mvp.ui.fragment.base.BaseFragment;
@@ -47,8 +49,12 @@ public class RimFragmnet extends BaseFragment implements LocationSource, AMapLoc
     RecyclerView mRecyclerView;
     @BindView(R.id.rimOizl)
     TextView rimOizl;
+    @BindView(R.id.repailCar)
+    TextView repailCar;
     @BindView(R.id.banner)
     Banner mBanner;
+    @BindView(R.id.refreshLayout)
+    SwipeRefreshLayout mRefreshLayout;
 
     private String strText;
     private String city ;
@@ -102,6 +108,7 @@ public class RimFragmnet extends BaseFragment implements LocationSource, AMapLoc
     }
 
     private void requestPermiSsiongs() {
+        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.yellow),getResources().getColor(R.color.bank));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -110,6 +117,8 @@ public class RimFragmnet extends BaseFragment implements LocationSource, AMapLoc
         }else{
             initLoc();
         }
+
+        initListener();
     }
 
     @Override
@@ -175,11 +184,14 @@ public class RimFragmnet extends BaseFragment implements LocationSource, AMapLoc
         mRimPoiSearchTask.setRimPoiSearchListener(this);
     }
 
-    @OnClick({R.id.rimOizl})
+    @OnClick({R.id.rimOizl , R.id.repailCar})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.rimOizl:
                 getActivity().startActivity(new Intent(getActivity(), NearByOizlActivity.class));
+                break;
+            case R.id.repailCar:
+                getActivity().startActivity(new Intent(getActivity() , CarRepairMapActivity.class));
                 break;
         }
     }
@@ -197,6 +209,16 @@ public class RimFragmnet extends BaseFragment implements LocationSource, AMapLoc
             imagesList.add(i);
         }
         return imagesList;
+    }
+
+    private void initListener(){
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initLoc();
+                mRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override

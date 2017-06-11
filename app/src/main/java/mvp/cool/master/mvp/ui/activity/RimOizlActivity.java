@@ -24,7 +24,6 @@ import mvp.cool.master.mvp.ui.adapter.RimOizlAdapter;
 public class RimOizlActivity extends BaseActivity {
 
     private List<PoiItem> mItemList = new ArrayList<>();
-    private List<PoiItem> mPoiItems = new ArrayList<>();
     @BindView(R.id.oizlRecycler)
     RecyclerView mRecyclerView;
 
@@ -82,7 +81,6 @@ public class RimOizlActivity extends BaseActivity {
                 startIntentActivity(position);
             }
         });
-
     }
 
     private void startIntentActivity(int position){

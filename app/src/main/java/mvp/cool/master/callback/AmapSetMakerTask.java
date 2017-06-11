@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @version 1.0
+ * @author TanHaoShi
  * Created by Administrator on 2017/6/1.
  */
 
@@ -56,7 +58,6 @@ public class AmapSetMakerTask implements PoiSearch.OnPoiSearchListener{
     public void onPoiItemSearched(PoiItem poiItem, int i) {
 
     }
-
 
     public void setAmapSerMakerListener(AmapSetMakerTask.AmapSetMakerTaskImpl amapSerMakerListener){
         this.mAmapSetMakerTask = amapSerMakerListener;

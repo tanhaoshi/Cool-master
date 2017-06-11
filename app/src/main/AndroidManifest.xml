@@ -122,7 +122,23 @@
             android:name=".mvp.ui.activity.RimOizlActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
-        <activity android:name=".mvp.ui.activity.NameTitlePayActivity"
+        <activity
+            android:name=".mvp.ui.activity.NameTitlePayActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.PayDetailsActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.CarRepairMapActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.CarRepairListActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity android:name=".mvp.ui.activity.CarRepairPayActivity"
                   android:theme="@style/CommonViewStyle">
         </activity>
     </application>

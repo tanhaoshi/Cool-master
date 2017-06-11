@@ -1,11 +1,9 @@
 package mvp.cool.master.mvp.ui.activity;
 
-import android.Manifest;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,7 +36,7 @@ public class QrCodeActivity extends BaseActivity {
         base_title.setText("消费二维码");
         qrCode.setTextColor(getResources().getColor(R.color.deep_yellow));
         createChineseQRCode();
-        requestPermiSsiongs();
+        //requestPermiSsiongs();
     }
 
     @Override
@@ -82,10 +80,10 @@ public class QrCodeActivity extends BaseActivity {
         }
     }
 
-    private void requestPermiSsiongs() {
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }
-    }
+//    private void requestPermiSsiongs() {
+//        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+//            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+//        }
+//    }
 
 }

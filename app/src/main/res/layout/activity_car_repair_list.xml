@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_car_repair_list"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mvp.cool.master.mvp.ui.activity.CarRepairListActivity">
+
+    <include layout="@layout/base_toolbar"/>
+
+    <include layout="@layout/line_onedimens"/>
+
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <Button
+            android:background="@color/white"
+            android:id="@+id/sortId"
+            android:layout_gravity="center_vertical"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:text="排序"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:background="@color/line_bg"
+            android:layout_width="0.8dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:background="@color/white"
+            android:id="@+id/screenId"
+            android:layout_gravity="center_vertical"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:text="筛选"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/line_onedimens"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/oizlRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

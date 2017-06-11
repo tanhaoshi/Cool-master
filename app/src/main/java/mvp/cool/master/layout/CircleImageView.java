@@ -27,7 +27,7 @@ import mvp.cool.master.R;
 /**
  * @version 1.0
  * @author TanHaoShi
- * Created by Fussen on 2017/5/17.
+ * Created by TanHaoShi on 2017/5/17.
  */
 
 public class CircleImageView extends ImageView {

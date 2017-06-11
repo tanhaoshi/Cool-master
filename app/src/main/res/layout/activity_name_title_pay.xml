@@ -31,14 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="104dp"/>
 
-            <!--<LinearLayout-->
-                <!--android:id="@+id/payView"-->
-                <!--android:orientation="vertical"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent">-->
+            <LinearLayout
+                android:id="@+id/payView"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/payView"
         android:orientation="horizontal"
         android:background="@color/white"
         android:layout_width="match_parent"
@@ -418,7 +417,7 @@
                     android:layout_height="match_parent"/>
             </LinearLayout>
 
-            <!--</LinearLayout>-->
+            </LinearLayout>
 
         </LinearLayout>
 

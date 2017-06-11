@@ -76,7 +76,6 @@ public class NameTitlePayActivity extends BaseActivity {
     @Override
     protected void initView() {
         getIntentData();
-        base_image.setVisibility(View.VISIBLE);
         initData();
     }
 
@@ -212,7 +211,7 @@ public class NameTitlePayActivity extends BaseActivity {
                     .crossFade()
                     .into(mImageView);
         }
-
+        base_image.setVisibility(View.VISIBLE);
         base_title.setText(mPoiItems.getTitle());
         oizlName.setText(mPoiItems.getTitle());
         oizlType.setText(mPoiItems.getTypeDes());
@@ -231,12 +230,7 @@ public class NameTitlePayActivity extends BaseActivity {
     }
 
     private void jumpPobuWindown(){
-        mMenuView = new PhotoWindow(NameTitlePayActivity.this, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        mMenuView = new PhotoWindow(this);
         mMenuView.showAtLocation(NameTitlePayActivity.this.findViewById(R.id.payView),
                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
@@ -263,5 +257,17 @@ public class NameTitlePayActivity extends BaseActivity {
                }
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
     }
 }
