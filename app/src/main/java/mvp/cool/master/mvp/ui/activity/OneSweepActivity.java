@@ -45,7 +45,7 @@ public class OneSweepActivity extends BaseActivity implements QRCodeView.Delegat
 
     }
 
-    @OnClick({R.id.qrCode , R.id.qrPhone})
+    @OnClick({R.id.qrCode , R.id.qrPhone,R.id.base_iv_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.qrCode:
@@ -53,6 +53,9 @@ public class OneSweepActivity extends BaseActivity implements QRCodeView.Delegat
                 break;
             case R.id.qrPhone:
                 startActivity(OneSweepActivity.class);
+                break;
+            case R.id.base_iv_back:
+                finish();
                 break;
         }
     }

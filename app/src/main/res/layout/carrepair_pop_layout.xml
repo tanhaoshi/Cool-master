@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:background="@color/name_pay"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/relLayout"
@@ -23,7 +23,7 @@
 
         <TextView
             android:layout_marginTop="8dp"
-            android:text="收银台"
+            android:text="维修项目"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_centerHorizontal="true"
@@ -43,24 +43,27 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_margin="16dp"
-        android:id="@+id/recyclerView"
+        android:id="@+id/popRecyclerView"
+        android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
 
     <Button
         android:text="其它"
+        android:background="@drawable/safety_activty_phone_selector"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:layout_height="46dp"/>
 
     <Button
         android:text="确认"
+        android:background="@color/yellow"
         android:layout_margin="12dp"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="52dp"
         />
 
 </LinearLayout>

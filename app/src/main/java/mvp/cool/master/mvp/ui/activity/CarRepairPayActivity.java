@@ -41,6 +41,7 @@ public class CarRepairPayActivity extends BaseActivity {
     @Override
     protected void initView() {
         getIntentData();
+        base_image.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -56,8 +57,10 @@ public class CarRepairPayActivity extends BaseActivity {
     private void getIntentData(){
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data");
-        mPoiItems = bundle.getParcelable("listdata");
-        initDataView();
+        if(bundle!=null){
+            mPoiItems = bundle.getParcelable("listdata");
+            initDataView();
+        }
     }
 
     private void initDataView(){
@@ -70,7 +73,6 @@ public class CarRepairPayActivity extends BaseActivity {
                     .crossFade()
                     .into(shopLog);
         }
-        base_image.setVisibility(View.VISIBLE);
         base_title.setText(mPoiItems.getTitle());
         oizlName.setText(mPoiItems.getTitle());
         oizlType.setText(mPoiItems.getTypeDes());

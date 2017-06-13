@@ -17,11 +17,13 @@ import mvp.cool.master.R;
  * Created by Administrator on 2017/6/11.
  */
 
-public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener{
 
     List<String> mList;
 
     private Context mContext;
+
+    private OnItemClickListener mOnItemClickListener = null;
 
     public CarRepairPopAdapter(Context context , List<String> list){
         this.mList = list;
@@ -30,8 +32,13 @@ public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        StyleViewHolder styleViewHolder = new StyleViewHolder(LayoutInflater.from(mContext)
-                .inflate(R.layout.adapter_carrepair_pop, parent, false));
+        View view = LayoutInflater.from(mContext)
+                .inflate(R.layout.adapter_carrepair_pop, parent, false);
+
+        view.setOnClickListener(this);
+
+        StyleViewHolder styleViewHolder = new StyleViewHolder(view);
+
         return styleViewHolder;
     }
 
@@ -39,6 +46,8 @@ public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
        if(holder instanceof StyleViewHolder){
            ((StyleViewHolder)holder).tv.setText(mList.get(position).toString());
+
+           ((StyleViewHolder)holder).itemView.setTag(position);
        }
     }
 
@@ -47,7 +56,23 @@ public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return mList!=null? mList.size(): 0;
     }
 
-     static class StyleViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onClick(View v) {
+        if (mOnItemClickListener != null) {
+            //注意这里使用getTag方法获取position
+            mOnItemClickListener.onItemClick(v,(int)v.getTag());
+        }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
+    public static interface OnItemClickListener {
+        void onItemClick(View view , int position);
+    }
+
+    static class StyleViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv;
 
@@ -56,4 +81,5 @@ public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             tv = (TextView) styleView.findViewById(R.id.layoutText);
         }
     }
+
 }

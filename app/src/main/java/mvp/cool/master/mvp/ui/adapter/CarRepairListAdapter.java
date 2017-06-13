@@ -43,13 +43,7 @@ public class CarRepairListAdapter extends BaseQuickAdapter<PoiItem, BaseViewHold
 
             helper.setText(R.id.oizlTitle, item.getTitle());
 
-            Glide.with(App.getInstance()).load(R.drawable.oizlmobile)
-                    .crossFade()
-                    .into((ImageView) helper.getView(R.id.oizlPhone));
-
-            helper.setText(R.id.oizlO2, item.getTypeDes());
-
-            helper.setText(R.id.oizlMobile, item.getTel());
+            helper.setText(R.id.oizlPhone, item.getTel());
 
             helper.setText(R.id.oizlAddares, item.getCityName() + item.getAdName() + item.getSnippet());
         }

@@ -201,20 +201,24 @@ public class NameTitlePayActivity extends BaseActivity {
     private void getIntentData(){
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data");
-        mPoiItems = bundle.getParcelable("listdata");
-        initDataView();
+        if(bundle != null){
+            mPoiItems = bundle.getParcelable("listdata");
+            initDataView();
+        }
     }
 
     private void initDataView(){
-        if(mPoiItems.getPhotos().size() > 0){
-            Glide.with(this).load(mPoiItems.getPhotos().get(0).getUrl())
-                    .crossFade()
-                    .into(mImageView);
+        if(mPoiItems!=null){
+            if(mPoiItems.getPhotos().size() > 0){
+                Glide.with(this).load(mPoiItems.getPhotos().get(0).getUrl())
+                        .crossFade()
+                        .into(mImageView);
+             }
+            base_title.setText(mPoiItems.getTitle());
+            oizlName.setText(mPoiItems.getTitle());
+            oizlType.setText(mPoiItems.getTypeDes());
         }
         base_image.setVisibility(View.VISIBLE);
-        base_title.setText(mPoiItems.getTitle());
-        oizlName.setText(mPoiItems.getTitle());
-        oizlType.setText(mPoiItems.getTypeDes());
     }
 
     @OnClick({R.id.base_iv_back , R.id.oizlPay})

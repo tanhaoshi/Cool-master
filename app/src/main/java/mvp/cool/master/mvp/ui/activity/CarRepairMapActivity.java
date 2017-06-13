@@ -1,19 +1,17 @@
 package mvp.cool.master.mvp.ui.activity;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +32,6 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.PoiItem;
-import com.hss01248.dialog.StyledDialog;
-import com.hss01248.dialog.config.ConfigBean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -173,6 +169,9 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
         mMyLocationStyle = new MyLocationStyle();
         mMyLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);
         mMyLocationStyle.interval(2000);
+        mMyLocationStyle.radiusFillColor(getResources().getColor(R.color.touming));
+        mMyLocationStyle.strokeColor(getResources().getColor(R.color.touming));
+        mMyLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.isme)));
         mAMap.setMyLocationStyle(mMyLocationStyle);
         mAMap.setMyLocationEnabled(true);
         mMyLocationStyle.showMyLocation(true);
@@ -216,12 +215,7 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
 
     @Override
     public View getInfoWindow(Marker marker) {
-        if(infoWindow == null) {
-            infoWindow = LayoutInflater.from(this).inflate(
-                    R.layout.nearby_style, null);
-        }
-        render(marker, infoWindow);
-        return infoWindow;
+        return null;
     }
 
     @Override
@@ -247,7 +241,7 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
     @Override
     public void callBackData(List<PoiItem> list) {
         mItemList = list;
-        mAMap.moveCamera(CameraUpdateFactory.zoomTo(13));
+        mAMap.moveCamera(CameraUpdateFactory.zoomTo(15));
         for(int i = 0; i<= list.size(); i++){
             if(i<7){
                 setGhlapMarketGreen(list.get(i),i);
@@ -258,10 +252,12 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
     }
 
     private void setGhlapMarker(PoiItem poiItem , int count){
+        //社会
         LatLng latLng = new LatLng( poiItem.getLatLonPoint().getLatitude() , poiItem.getLatLonPoint().getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title(poiItem.getTitle()).snippet(poiItem.getDistance()+"");
+        markerOptions.title(poiItem.getTitle()+"|"+"￥500").snippet(poiItem.getTitle()+"|"+poiItem.getCityName()
+                + poiItem.getAdName() + poiItem.getSnippet());
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(getMyBitmap(count+"")));
         Marker marker = mAMap.addMarker(markerOptions);
         initUISetings();
@@ -269,10 +265,12 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
     }
 
     private void setGhlapMarketGreen(PoiItem poiItem , int count){
+        //合作商家
         LatLng latLng = new LatLng( poiItem.getLatLonPoint().getLatitude() , poiItem.getLatLonPoint().getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title(poiItem.getTitle()).snippet(poiItem.getDistance()+"");
+        markerOptions.title(poiItem.getTitle()+"|"+"￥500").snippet(poiItem.getTel()+"|"+poiItem.getCityName()
+                + poiItem.getAdName() + poiItem.getSnippet());
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(getGreenBitmap(count+"")));
         Marker marker = mAMap.addMarker(markerOptions);
         initUISetings();
@@ -288,9 +286,9 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
         TextPaint textPaint = new TextPaint();
         textPaint.setAntiAlias(true);
         textPaint.setTextSize(24f);
-        textPaint.setColor(getResources().getColor(R.color.black));
+        textPaint.setColor(getResources().getColor(R.color.white));
         // 18 35
-        canvas.drawText(pm_val, 0, 30,textPaint);// 设置bitmap上面的文字位置
+        canvas.drawText(pm_val, 50, 60,textPaint);// 设置bitmap上面的文字位置
         return bitmap;
     }
 
@@ -303,24 +301,30 @@ public class CarRepairMapActivity extends BaseActivity implements LocationSource
         TextPaint textPaint = new TextPaint();
         textPaint.setAntiAlias(true);
         textPaint.setTextSize(24f);
-        textPaint.setColor(getResources().getColor(R.color.black));
+        textPaint.setColor(getResources().getColor(R.color.white));
         // 18 35
-        canvas.drawText(pm_val, 0, 30,textPaint);// 设置bitmap上面的文字位置
+        canvas.drawText(pm_val, 50, 60,textPaint);// 设置bitmap上面的文字位置
         return bitmap;
     }
 
     public void render(Marker marker, final View view) {
         TextView windowTitle = (TextView)view.findViewById(R.id.title);
-        windowTitle.setText(marker.getTitle());
-        TextView windowSnippet = (TextView)view.findViewById(R.id.distance);
-        windowSnippet.setText("距离你:"+marker.getSnippet()+"m");
+        windowTitle.setText(marker.getTitle().substring(0,marker.getTitle().indexOf("|")));
+        TextView windowMoney = (TextView)view.findViewById(R.id.money);
+        windowMoney.setText(marker.getTitle().substring(marker.getTitle().lastIndexOf("|")+1,
+                marker.getTitle().length()));
+        TextView windowAddres = (TextView)view.findViewById(R.id.oizlAddares);
+        windowAddres.setText(marker.getSnippet().substring(marker.getSnippet().lastIndexOf("|")+1
+        ,marker.getSnippet().length()));
         AMap.OnInfoWindowClickListener listener = new AMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                ViewGroup viewGroup = (ViewGroup)view.inflate(App.getInstance(),R.layout.style_customview,null);
-                final ConfigBean bean = StyledDialog.buildCustom(viewGroup, Gravity.CENTER);
-                final Dialog dialog = bean.show();
-                dialog.show();
+//                ViewGroup viewGroup = (ViewGroup)view.inflate(App.getInstance(),R.layout.style_customview,null);
+//                final ConfigBean bean = StyledDialog.buildCustom(viewGroup, Gravity.CENTER);
+//                final Dialog dialog = bean.show();
+//                dialog.show();
+                Intent intent = new Intent(CarRepairMapActivity.this,CarRepairPayActivity.class);
+                startActivity(intent);
             }
         };
         mAMap.setOnInfoWindowClickListener(listener);

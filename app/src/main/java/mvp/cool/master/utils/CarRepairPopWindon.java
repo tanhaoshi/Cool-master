@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
 import mvp.cool.master.R;
-import mvp.cool.master.layout.layoutmanager.DividerGridItemDecoration;
 import mvp.cool.master.mvp.ui.adapter.CarRepairPopAdapter;
 
 /**
@@ -29,6 +30,8 @@ public class CarRepairPopWindon extends PopupWindow{
     private View mMenuView;
 
     private RecyclerView mRecyclerView;
+
+    private ImageView closeIma;
 
     private String[] arrays;
 
@@ -48,7 +51,8 @@ public class CarRepairPopWindon extends PopupWindow{
     private void initView() {
         LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mMenuView = inflater.inflate(R.layout.carrepair_pop_layout,null);
-        mRecyclerView = (RecyclerView)mMenuView.findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView)mMenuView.findViewById(R.id.popRecyclerView);
+        closeIma = (ImageView)mMenuView.findViewById(R.id.closeIma);
 
         this.setContentView(mMenuView);
         this.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
@@ -70,17 +74,30 @@ public class CarRepairPopWindon extends PopupWindow{
                         dismiss();
                     }
                 }
-                return true;
+                return false;
+            }
+        });
+
+        closeIma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
     }
 
     private void initData(){
-        arrays = new String[]{"更换轮胎","更换刹车片","洗车","充电","喷涂油漆面","打蜡","更换离合片","电路维修","发动机改装"};
+        arrays = new String[]{"更换轮胎","更换刹车片","洗车",
+                "充电","喷涂油漆面","打蜡","更换离合片","电路维修"};
         mCarRepairAdapter = new CarRepairPopAdapter(mContext,Arrays.asList(arrays));
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext,3));
-        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(mContext));
         mRecyclerView.setAdapter(mCarRepairAdapter);
-    }
 
+        mCarRepairAdapter.setOnItemClickListener(new CarRepairPopAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(mContext,arrays[position],Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

@@ -1,18 +1,21 @@
 package mvp.cool.master.mvp.ui.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.amap.api.services.core.PoiItem;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mvp.cool.master.App;
 import mvp.cool.master.R;
+import mvp.cool.master.mvp.bean.OizlModel;
 
 /**
  * @version 1.0
@@ -21,6 +24,8 @@ import mvp.cool.master.R;
  */
 
 public class RimOizlAdapter extends BaseQuickAdapter<PoiItem, BaseViewHolder>{
+
+    private List<OizlModel> mModelList = new ArrayList<>();
 
    private Context mContext;
 
@@ -44,33 +49,40 @@ public class RimOizlAdapter extends BaseQuickAdapter<PoiItem, BaseViewHolder>{
 
             helper.setText(R.id.oizlTitle , item.getTitle());
 
-            Glide.with(App.getInstance()).load(R.drawable.oizlmobile)
-                    .crossFade()
-                    .into((ImageView)helper.getView(R.id.oizlPhone));
-
-            helper.setText(R.id.oizlO2 , item.getTypeDes());
-
-            helper.setText(R.id.oizlMobile , item.getTel());
+            helper.setText(R.id.oizlPhone , item.getTel());
 
             helper.setText(R.id.oizlAddares , item.getCityName() + item.getAdName() + item.getSnippet());
 
-            if("中国石油曲沃第1加油站".equals(item.getTitle())){
-                TextView textView = (TextView)helper.getView(R.id.flagText);
-                textView.setTextColor(mContext.getResources().getColor(R.color.red));
-                helper.setText(R.id.flagText , "合作");
-            }
+            RecyclerView recyclerView = (RecyclerView) helper.getView(R.id.recyclerView);
+            mModelList.add(new OizlModel("0#" , "6.29"));
+            mModelList.add(new OizlModel("93#" , "6.39"));
+            mModelList.add(new OizlModel("92#" , "6.09"));
+            mModelList.add(new OizlModel("95#" , "6.19"));
+            mModelList.add(new OizlModel("97#" , "6.59"));
+            mModelList.add(new OizlModel("94#" , "6.111"));
+            LinearLayoutManager layoutManager = new LinearLayoutManager(App.getInstance());
+            layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            recyclerView.setLayoutManager(layoutManager);
+            initAdapter(recyclerView);
+        }
+    }
 
-            if("中国石化城北加油站(席村北大街)".equals(item.getTitle())){
-                TextView textView = (TextView)helper.getView(R.id.flagText);
-                textView.setTextColor(mContext.getResources().getColor(R.color.red));
-                helper.setText(R.id.flagText , "合作");
+    private void initAdapter(RecyclerView recyclerView){
+        List<OizlModel> list = null;
+        LinearLayoutManager layoutManager = new LinearLayoutManager(App.getInstance());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        if(mModelList.size()>5){
+            list = new ArrayList<>();
+            for(int i=0;i<4;i++){
+                list.add(mModelList.get(i));
             }
-
-            if("捌捌捌加油站".equals(item.getTitle())){
-                TextView textView = (TextView)helper.getView(R.id.flagText);
-                textView.setTextColor(mContext.getResources().getColor(R.color.red));
-                helper.setText(R.id.flagText , "合作");
-            }
+            list.add(new OizlModel("......",""));
+            PoitemAdapter poitemAdapter = new PoitemAdapter(list);
+            recyclerView.setAdapter(poitemAdapter);
+        }else{
+            PoitemAdapter poitemAdapter = new PoitemAdapter(mModelList);
+            recyclerView.setAdapter(poitemAdapter);
         }
     }
 

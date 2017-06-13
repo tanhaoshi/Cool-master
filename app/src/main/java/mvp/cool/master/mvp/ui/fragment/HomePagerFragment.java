@@ -30,6 +30,8 @@ import mvp.cool.master.R;
 import mvp.cool.master.callback.PoiSearchTask;
 import mvp.cool.master.layout.layoutmanager.DriverItemDecoration;
 import mvp.cool.master.layout.layoutmanager.VerticalLayoutManager;
+import mvp.cool.master.mvp.ui.activity.NearByOizlActivity;
+import mvp.cool.master.mvp.ui.activity.OneSweepActivity;
 import mvp.cool.master.mvp.ui.adapter.PoiSearchAdapter;
 import mvp.cool.master.mvp.ui.fragment.base.BaseFragment;
 import mvp.cool.master.utils.GildeImageLoader;
@@ -56,6 +58,10 @@ public class HomePagerFragment extends BaseFragment implements
     Banner mBanner;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout mRefreshLayout;
+    @BindView(R.id.oneSweep)
+    TextView oneSweep;
+    @BindView(R.id.addOizl)
+    TextView addOizl;
 
     private String strText;
     private String city;
@@ -174,7 +180,7 @@ public class HomePagerFragment extends BaseFragment implements
         initListener();
     }
 
-    @OnClick({R.id.laundryHome ,R.id.parkingHome ,R.id.bankHome ,R.id.superMaketHome })
+    @OnClick({R.id.laundryHome ,R.id.parkingHome ,R.id.bankHome ,R.id.superMaketHome ,R.id.oneSweep,R.id.addOizl })
     public void onClick(View view){
         switch (view.getId()){
             case R.id.laundryHome:
@@ -225,6 +231,12 @@ public class HomePagerFragment extends BaseFragment implements
                 strText = superMaketHome.getText().toString();
                 PoiSearchTask.getInstance(App.getInstance()).onSearch(strText,city ,amapLat,amapLong);
                 break;
+            case R.id.oneSweep:
+                startActivity(OneSweepActivity.class);
+                break;
+            case R.id.addOizl:
+                startActivity(NearByOizlActivity.class);
+                break;
         }
     }
 
@@ -254,6 +266,7 @@ public class HomePagerFragment extends BaseFragment implements
         mRecyclerView.setNestedScrollingEnabled(false);
         mPoiSearchAdapter = new PoiSearchAdapter(list);
         mRecyclerView.setAdapter(mPoiSearchAdapter);
+
     }
 
     private void initBananer(){

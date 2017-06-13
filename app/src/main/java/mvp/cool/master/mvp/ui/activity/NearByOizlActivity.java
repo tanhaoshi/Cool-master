@@ -1,19 +1,19 @@
 package mvp.cool.master.mvp.ui.activity;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +34,6 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.PoiItem;
-import com.hss01248.dialog.StyledDialog;
-import com.hss01248.dialog.config.ConfigBean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -46,7 +44,9 @@ import butterknife.OnClick;
 import mvp.cool.master.App;
 import mvp.cool.master.R;
 import mvp.cool.master.callback.AmapSetMakerTask;
+import mvp.cool.master.mvp.bean.OizlModel;
 import mvp.cool.master.mvp.ui.activity.base.BaseActivity;
+import mvp.cool.master.mvp.ui.adapter.PoitemAdapter;
 
 public class NearByOizlActivity extends BaseActivity implements LocationSource,AMapLocationListener
         ,AmapSetMakerTask.AmapSetMakerTaskImpl , AMap.InfoWindowAdapter{
@@ -64,6 +64,8 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
     private AMapLocationClientOption mLocationOption = null;
     private OnLocationChangedListener mListener = null;
     private List<PoiItem> mItemList = new ArrayList<>();
+    private List<OizlModel> mModelList = new ArrayList<>();
+    private boolean isCome = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -128,6 +130,9 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
         mMyLocationStyle = new MyLocationStyle();
         mMyLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);
         mMyLocationStyle.interval(2000);
+        mMyLocationStyle.radiusFillColor(getResources().getColor(R.color.touming));
+        mMyLocationStyle.strokeColor(getResources().getColor(R.color.touming));
+        mMyLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.isme)));
         mAMap.setMyLocationStyle(mMyLocationStyle);
         mAMap.setMyLocationEnabled(true);
         mMyLocationStyle.showMyLocation(true);
@@ -195,7 +200,7 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
     @Override
     public void getRimPoiSearch(List<PoiItem> list) {
         mItemList = list;
-        mAMap.moveCamera(CameraUpdateFactory.zoomTo(13));
+        mAMap.moveCamera(CameraUpdateFactory.zoomTo(15));
         for(int i = 0; i<= list.size(); i++){
             if(i<7){
                 setGhlapMarketGreen(list.get(i),i);
@@ -206,10 +211,12 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
     }
 
     private void setGhlapMarker(PoiItem poiItem , int count){
+        //社会
         LatLng latLng = new LatLng( poiItem.getLatLonPoint().getLatitude() , poiItem.getLatLonPoint().getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title(poiItem.getTitle()).snippet(poiItem.getDistance()+"");
+        markerOptions.title(poiItem.getTitle()+"|"+poiItem.getTypeDes()).snippet(poiItem.getCityName()
+                 + poiItem.getAdName() + poiItem.getSnippet() + "|" + poiItem.getTel());
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(getMyBitmap(count+"")));
         Marker marker = mAMap.addMarker(markerOptions);
         initUISetings();
@@ -217,10 +224,12 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
     }
 
     private void setGhlapMarketGreen(PoiItem poiItem , int count){
+        //合作商家
         LatLng latLng = new LatLng( poiItem.getLatLonPoint().getLatitude() , poiItem.getLatLonPoint().getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title(poiItem.getTitle()).snippet(poiItem.getDistance()+"");
+        markerOptions.title(poiItem.getTitle()+"|"+poiItem.getTypeDes()).snippet(poiItem.getCityName()
+                 + poiItem.getAdName() + poiItem.getSnippet() + "|" + poiItem.getTel());
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(getGreenBitmap(count+"")));
         Marker marker = mAMap.addMarker(markerOptions);
         initUISetings();
@@ -238,24 +247,32 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
     public View getInfoContents(Marker marker) {
         if(infoWindow == null) {
             infoWindow = LayoutInflater.from(this).inflate(
-                    R.layout.nearby_style, null);
+                    R.layout.nearby_hezuo_style, null);
         }
         render(marker, infoWindow);
         return infoWindow;
     }
 
     public void render(Marker marker, final View view) {
-        TextView windowTitle = (TextView)view.findViewById(R.id.title);
-        windowTitle.setText(marker.getTitle());
-        TextView windowSnippet = (TextView)view.findViewById(R.id.distance);
-        windowSnippet.setText("距离你:"+marker.getSnippet()+"m");
+        TextView windowTitle = (TextView)view.findViewById(R.id.oizlTitle);
+        windowTitle.setText(marker.getTitle().substring(0 , marker.getTitle().indexOf("|")));
+        TextView windowSnippet = (TextView)view.findViewById(R.id.spnniter);
+        windowSnippet.setText(marker.getTitle().substring(marker.getTitle().indexOf("|")+1,marker.getTitle().length()));
+        TextView windowMobile = (TextView)view.findViewById(R.id.oizlMobile);
+        windowMobile.setText(marker.getSnippet().substring(marker.getSnippet().lastIndexOf("|")+1,marker.getSnippet().length()));
+        TextView windowAddres = (TextView)view.findViewById(R.id.oizlAddares);
+        windowAddres.setText(marker.getSnippet().substring(0,marker.getSnippet().lastIndexOf("|")));
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.view);
+        initData(recyclerView);
         AMap.OnInfoWindowClickListener listener = new AMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                ViewGroup viewGroup = (ViewGroup)view.inflate(App.getInstance(),R.layout.style_customview,null);
-                final ConfigBean bean = StyledDialog.buildCustom(viewGroup, Gravity.CENTER);
-                final Dialog dialog = bean.show();
-                dialog.show();
+//                ViewGroup viewGroup = (ViewGroup)view.inflate(App.getInstance(),R.layout.style_customview,null);
+//                final ConfigBean bean = StyledDialog.buildCustom(viewGroup, Gravity.CENTER);
+//                final Dialog dialog = bean.show();
+//                dialog.show();
+                Intent intent = new Intent(NearByOizlActivity.this,NameTitlePayActivity.class);
+                startActivity(intent);
             }
         };
         mAMap.setOnInfoWindowClickListener(listener);
@@ -269,10 +286,10 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
         Canvas canvas = new Canvas(bitmap);
         TextPaint textPaint = new TextPaint();
         textPaint.setAntiAlias(true);
-        textPaint.setTextSize(24f);
-        textPaint.setColor(getResources().getColor(R.color.black));
+        textPaint.setTextSize(32);
+        textPaint.setColor(getResources().getColor(R.color.white));
         // 18 35
-        canvas.drawText(pm_val, 0, 30,textPaint);// 设置bitmap上面的文字位置
+        canvas.drawText(pm_val, 50, 60,textPaint);// 设置bitmap上面的文字位置
         return bitmap;
     }
 
@@ -284,10 +301,10 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
         Canvas canvas = new Canvas(bitmap);
         TextPaint textPaint = new TextPaint();
         textPaint.setAntiAlias(true);
-        textPaint.setTextSize(24f);
-        textPaint.setColor(getResources().getColor(R.color.black));
+        textPaint.setTextSize(32);
+        textPaint.setColor(getResources().getColor(R.color.white));
         // 18 35
-        canvas.drawText(pm_val, 0, 30,textPaint);// 设置bitmap上面的文字位置
+            canvas.drawText(pm_val, 50, 60,textPaint);// 设置bitmap上面的文字位置
         return bitmap;
     }
 
@@ -319,6 +336,38 @@ public class NearByOizlActivity extends BaseActivity implements LocationSource,A
             initLoc();
         }else{
             initLoc();
+        }
+    }
+
+    private void initData(RecyclerView recyclerView){
+        if(isCome){
+            mModelList.add(new OizlModel("0#" , "6.29"));
+            mModelList.add(new OizlModel("93#" , "6.39"));
+            mModelList.add(new OizlModel("92#" , "6.09"));
+            mModelList.add(new OizlModel("95#" , "6.19"));
+            mModelList.add(new OizlModel("97#" , "6.59"));
+            mModelList.add(new OizlModel("94#" , "6.111"));
+            initAdapter(recyclerView);
+            isCome = false;
+        }
+    }
+
+    private void initAdapter(RecyclerView recyclerView){
+        List<OizlModel> list = null;
+        LinearLayoutManager layoutManager = new LinearLayoutManager(App.getInstance());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        if(mModelList.size()>5){
+            list = new ArrayList<>();
+            for(int i=0;i<4;i++){
+                list.add(mModelList.get(i));
+            }
+            list.add(new OizlModel("......",""));
+            PoitemAdapter poitemAdapter = new PoitemAdapter(list);
+            recyclerView.setAdapter(poitemAdapter);
+        }else{
+            PoitemAdapter poitemAdapter = new PoitemAdapter(mModelList);
+            recyclerView.setAdapter(poitemAdapter);
         }
     }
 

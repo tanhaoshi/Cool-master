@@ -9,11 +9,12 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="75dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:layout_margin="8dp"
             android:id="@+id/oizlImage"
+            android:layout_gravity="center_vertical"
             android:scaleType="fitXY"
             android:layout_width="65dp"
             android:layout_height="65dp"/>
@@ -21,7 +22,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -33,66 +34,71 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="6dp"
                     android:textSize="14sp"
-                    android:text="华江石油"
+                    android:text="上海慧翔"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                 />
 
-                <LinearLayout
-                    android:orientation="vertical"
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:id="@+id/oizlPhone"
+                    android:drawableTop="@drawable/oizlmobile"
+                    android:text="021-65043831"
                     android:layout_width="100dp"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:textColor="@color/green"
-                        android:id="@+id/flagText"
-                        android:layout_marginBottom="3dp"
-                        android:textSize="12sp"
-                        android:text="社会"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:layout_marginBottom="2dp"
-                        android:id="@+id/oizlPhone"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <include layout="@layout/line_onedimens"/>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="50dp">
 
                 <TextView
-                    android:layout_marginLeft="5dp"
-                    android:textSize="13sp"
-                    android:textColor="@color/yellow"
-                    android:id="@+id/oizlO2"
-                    android:text="中国石油天然气"
-                    android:layout_weight="1"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/repairlCar"
+                    android:text="小汽车"
+                    android:drawablePadding="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="6dp"
+                    android:drawableRight="@drawable/repaircar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:textSize="11sp"
-                    android:gravity="center"
+                    android:layout_toEndOf="@+id/repairlCar"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/repairlDaCar"
+                    android:text="大卡车"
                     android:textColor="@color/black"
-                    android:id="@+id/oizlMobile"
-                    android:text="021-65043831"
-                    android:layout_width="100dp"
+                    android:textSize="14sp"
+                    android:drawablePadding="6dp"
+                    android:layout_marginLeft="12dp"
+                    android:drawableRight="@drawable/repairdaka"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-            </LinearLayout>
+
+                <TextView
+                    android:layout_marginRight="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/textMoney"
+                    android:text="￥500起"
+                    android:textSize="16sp"
+                    android:textColor="@color/yellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <include layout="@layout/line_onedimens"/>
         </LinearLayout>
     </LinearLayout>
 
