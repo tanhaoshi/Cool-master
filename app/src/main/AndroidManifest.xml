@@ -138,7 +138,11 @@
             android:name=".mvp.ui.activity.CarRepairListActivity"
             android:theme="@style/CommonViewStyle">
         </activity>
-        <activity android:name=".mvp.ui.activity.CarRepairPayActivity"
+        <activity
+            android:name=".mvp.ui.activity.CarRepairPayActivity"
+            android:theme="@style/CommonViewStyle">
+        </activity>
+        <activity android:name=".mvp.ui.activity.CarRepairlPayDetailsActivity"
                   android:theme="@style/CommonViewStyle">
         </activity>
     </application>

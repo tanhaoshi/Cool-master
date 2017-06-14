@@ -60,6 +60,7 @@
 
     <Button
         android:text="确认"
+        android:id="@+id/btn_yes"
         android:background="@color/yellow"
         android:layout_margin="12dp"
         android:layout_width="match_parent"

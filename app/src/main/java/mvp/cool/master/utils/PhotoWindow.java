@@ -24,6 +24,7 @@ import java.util.HashMap;
 import mvp.cool.master.R;
 import mvp.cool.master.layout.inputPWD.InputPwdView;
 import mvp.cool.master.layout.inputPWD.MyInputPwdUtil;
+import mvp.cool.master.mvp.ui.activity.CarRepairlPayDetailsActivity;
 import mvp.cool.master.mvp.ui.activity.PayDetailsActivity;
 
 public class PhotoWindow extends PopupWindow{
@@ -48,9 +49,12 @@ public class PhotoWindow extends PopupWindow{
 
     private MyInputPwdUtil myInputPwdUtil;
 
-    public PhotoWindow(Context context){
+    private int type;
+
+    public PhotoWindow(Context context , int type){
         super(context);
         mContext = context;
+        this.type = type;
 
         initDatas();
 
@@ -260,9 +264,15 @@ public class PhotoWindow extends PopupWindow{
             @Override
             public void finishPwd(String pwd) {
                 Toast.makeText(mContext, pwd, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext , PayDetailsActivity.class);
-                mContext.startActivity(intent);
-                myInputPwdUtil.hide();
+                if(type == 1){
+                    Intent intent = new Intent(mContext , PayDetailsActivity.class);
+                    mContext.startActivity(intent);
+                    myInputPwdUtil.hide();
+                }else if(type == 2){
+                    Intent intent = new Intent(mContext , CarRepairlPayDetailsActivity.class);
+                    mContext.startActivity(intent);
+                    myInputPwdUtil.hide();
+                }
             }
         });
     }

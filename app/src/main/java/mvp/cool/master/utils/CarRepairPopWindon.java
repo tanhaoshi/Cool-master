@@ -2,20 +2,29 @@ package mvp.cool.master.utils;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.Arrays;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import mvp.cool.master.R;
-import mvp.cool.master.mvp.ui.adapter.CarRepairPopAdapter;
+import mvp.cool.master.mvp.bean.OizlType;
+import mvp.cool.master.mvp.ui.adapter.CarRepailrTypeAdapter;
 
 /**
  * @version 1.0
@@ -33,13 +42,29 @@ public class CarRepairPopWindon extends PopupWindow{
 
     private ImageView closeIma;
 
-    private String[] arrays;
+    private Button btn_yes;
 
-    private CarRepairPopAdapter mCarRepairAdapter;
+    private CarRepailrTypeAdapter mCarRepailrTypeAdapter;
 
-    public CarRepairPopWindon(Context context){
+    private List<OizlType> mOizlTypeList;
+
+    private ArrayList<OizlType> mArrayList;
+
+    private OngetOizlTypeListener mOngetOizlTypeListener;
+
+    private Map<Integer,View> mViewMap;
+
+    private Map<Integer,View> mTypeMap;
+
+    public CarRepairPopWindon(Context context , Map<Integer,View> viewMap){
         super(context);
         this.mContext = context;
+
+        mArrayList = new ArrayList();
+
+        mViewMap = new HashMap<>();
+
+        mTypeMap = viewMap;
 
         initView();
 
@@ -53,6 +78,7 @@ public class CarRepairPopWindon extends PopupWindow{
         mMenuView = inflater.inflate(R.layout.carrepair_pop_layout,null);
         mRecyclerView = (RecyclerView)mMenuView.findViewById(R.id.popRecyclerView);
         closeIma = (ImageView)mMenuView.findViewById(R.id.closeIma);
+        btn_yes = (Button)mMenuView.findViewById(R.id.btn_yes);
 
         this.setContentView(mMenuView);
         this.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
@@ -84,20 +110,56 @@ public class CarRepairPopWindon extends PopupWindow{
                 dismiss();
             }
         });
+
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
     }
 
     private void initData(){
-        arrays = new String[]{"更换轮胎","更换刹车片","洗车",
-                "充电","喷涂油漆面","打蜡","更换离合片","电路维修"};
-        mCarRepairAdapter = new CarRepairPopAdapter(mContext,Arrays.asList(arrays));
+        mOizlTypeList = new ArrayList<>();
+        mOizlTypeList.add(new OizlType("更换轮胎",202.0));
+        mOizlTypeList.add(new OizlType("更换刹车片",230.0));
+        mOizlTypeList.add(new OizlType("洗车",232.0));
+        mOizlTypeList.add(new OizlType("充电",233.0));
+        mOizlTypeList.add(new OizlType("打蜡",400.0));
+        mOizlTypeList.add(new OizlType("更换离合片",123.0));
+        mOizlTypeList.add(new OizlType("电路维修",400.0));
+        mOizlTypeList.add(new OizlType("发动机改装",212.0));
+        mOizlTypeList.add(new OizlType("喷涂油漆面",112.0));
+        mCarRepailrTypeAdapter = new CarRepailrTypeAdapter(mOizlTypeList , mTypeMap);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext,3));
-        mRecyclerView.setAdapter(mCarRepairAdapter);
-
-        mCarRepairAdapter.setOnItemClickListener(new CarRepairPopAdapter.OnItemClickListener() {
+        mRecyclerView.setAdapter(mCarRepailrTypeAdapter);
+        mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(mContext,arrays[position],Toast.LENGTH_SHORT).show();
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                TextView textView = (TextView) view.findViewById(R.id.layoutText);
+                Drawable baground = textView.getBackground();
+                ColorDrawable colorDrawable = (ColorDrawable) baground;
+                int color = colorDrawable.getColor();
+                if(color == mContext.getResources().getColor(R.color.white)){
+                    mArrayList.add(mOizlTypeList.get(position));
+                    mViewMap.put(position,textView);
+                    textView.setBackgroundColor(mContext.getResources().getColor(R.color.yellow));
+                    mOngetOizlTypeListener.getOizlTypeList(mArrayList , mViewMap);
+                }else{
+                    mArrayList.remove(mOizlTypeList.get(position));
+                    mViewMap.remove(position);
+                    mOngetOizlTypeListener.getOizlTypeList(mArrayList , mViewMap);
+                    textView.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+                }
             }
         });
+    }
+
+    public void setOngetTyoeListener(OngetOizlTypeListener listener){
+        this.mOngetOizlTypeListener = listener;
+    }
+
+    public interface OngetOizlTypeListener{
+         void getOizlTypeList(List<OizlType> str , Map<Integer ,View> map);
     }
 }

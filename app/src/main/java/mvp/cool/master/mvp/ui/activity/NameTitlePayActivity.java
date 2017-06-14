@@ -234,7 +234,7 @@ public class NameTitlePayActivity extends BaseActivity {
     }
 
     private void jumpPobuWindown(){
-        mMenuView = new PhotoWindow(this);
+        mMenuView = new PhotoWindow(this,1);
         mMenuView.showAtLocation(NameTitlePayActivity.this.findViewById(R.id.payView),
                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
     }

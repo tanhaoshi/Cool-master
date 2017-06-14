@@ -2,6 +2,9 @@ package mvp.cool.master.mvp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,13 +13,25 @@ import android.widget.TextView;
 import com.amap.api.services.core.PoiItem;
 import com.bumptech.glide.Glide;
 
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import mvp.cool.master.App;
 import mvp.cool.master.R;
+import mvp.cool.master.layout.layoutmanager.DriverItemDecoration;
+import mvp.cool.master.layout.layoutmanager.VerticalLayoutManager;
+import mvp.cool.master.mvp.bean.OizlType;
 import mvp.cool.master.mvp.ui.activity.base.BaseActivity;
+import mvp.cool.master.mvp.ui.adapter.OizlTypeAdapter;
 import mvp.cool.master.utils.CarRepairPopWindon;
+import mvp.cool.master.utils.PhotoWindow;
 
-public class CarRepairPayActivity extends BaseActivity {
+public class CarRepairPayActivity extends BaseActivity implements
+        CarRepairPopWindon.OngetOizlTypeListener
+       ,OizlTypeAdapter.OnTextWatchMoneyListener{
 
     private PoiItem mPoiItems;
 
@@ -30,8 +45,20 @@ public class CarRepairPayActivity extends BaseActivity {
     ImageView shopLog;
     @BindView(R.id.repairadd)
     TextView repairAdd;
+    @BindView(R.id.recyclView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.textValue)
+    TextView textValue;
 
     private CarRepairPopWindon mMenuView;
+
+    private Map<Integer , View> mMap;
+
+    private List<OizlType> mOizlTypeList;
+
+    private MyHandler mMyHandler = new MyHandler(this);
+
+    private PhotoWindow popPayView;
 
     @Override
     protected int getContentView() {
@@ -85,7 +112,7 @@ public class CarRepairPayActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.oizlPay:
-                //jumpPobuWindown();
+                jumpPobuWindown();
                 break;
             case R.id.repairadd:
                 addRepairPobuWindown();
@@ -93,9 +120,79 @@ public class CarRepairPayActivity extends BaseActivity {
         }
     }
 
-    private void addRepairPobuWindown(){
-        mMenuView = new CarRepairPopWindon(this);
-        mMenuView.showAtLocation(CarRepairPayActivity.this.findViewById(R.id.payView),
-                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+    private void jumpPobuWindown(){
+        if(popPayView == null) {
+            popPayView = new PhotoWindow(this,2);
+            popPayView.showAtLocation(CarRepairPayActivity.this.findViewById(R.id.extraKey),
+                    Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        }else{
+            popPayView.showAtLocation(CarRepairPayActivity.this.findViewById(R.id.extraKey),
+                    Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        }
     }
+
+    private void addRepairPobuWindown(){
+        if(mMenuView == null){
+            mMenuView = new CarRepairPopWindon(this ,mMap);
+            mMenuView.setOngetTyoeListener(this);
+            mMenuView.showAtLocation(CarRepairPayActivity.this.findViewById(R.id.payView),
+                    Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        }else{
+            mMenuView.showAtLocation(CarRepairPayActivity.this.findViewById(R.id.payView),
+                    Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        }
+    }
+
+    @Override
+    public void getOizlTypeList(List<OizlType> list , Map<Integer,View> map) {
+        mRecyclerView.setLayoutManager(new VerticalLayoutManager(App.getInstance()));
+        mRecyclerView.addItemDecoration(new DriverItemDecoration(this ,DriverItemDecoration.VERTICAL_LIST));
+        OizlTypeAdapter oizlTypeAdapter = new OizlTypeAdapter(list);
+        oizlTypeAdapter.setOnTextWatchListenet(this);
+        mRecyclerView.setAdapter(oizlTypeAdapter);
+        mMap = map;
+        mOizlTypeList = list;
+        setMoneyAndChange(list);
+    }
+
+    @Override
+    public void getChangeMoney(Double str, int position) {
+
+        mOizlTypeList.get(position).setMoney(str);
+
+        setMoneyAndChange(mOizlTypeList);
+    }
+
+    private void setMoneyAndChange(List<OizlType> list){
+        Double value = 0.0;
+        for(int i=0;i<list.size();i++){
+            value = value +  list.get(i).getMoney();
+        }
+        Message message = new Message();
+        message.obj = value;
+        message.what = 0;
+        mMyHandler.sendMessage(message);
+    }
+
+    private static class MyHandler extends Handler {
+
+        private final WeakReference<CarRepairPayActivity> mActivity;
+
+        public MyHandler(CarRepairPayActivity activity) {
+            mActivity = new WeakReference<CarRepairPayActivity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            CarRepairPayActivity carRepairPayActivity = mActivity.get();
+            if(carRepairPayActivity != null){
+                switch (msg.what){
+                    case 0:
+                        carRepairPayActivity.textValue.setText(msg.obj+"");
+                        break;
+                }
+            }
+        }
+    }
+
 }

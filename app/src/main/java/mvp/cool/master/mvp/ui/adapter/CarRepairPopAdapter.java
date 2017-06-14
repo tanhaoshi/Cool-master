@@ -59,7 +59,6 @@ public class CarRepairPopAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onClick(View v) {
         if (mOnItemClickListener != null) {
-            //注意这里使用getTag方法获取position
             mOnItemClickListener.onItemClick(v,(int)v.getTag());
         }
     }
